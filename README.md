@@ -26,9 +26,9 @@ github "cp3hnu/TransitionKit"
 
 *   Add new run script
 
-       ```
-      /usr/local/bin/carthage copy-frameworks
-       ```
+         ```
+        /usr/local/bin/carthage copy-frameworks
+         ```
 
 *   Add Input files *$(SRCROOT)/Carthage/Build/iOS/TransitionKit.framework*
 
@@ -37,7 +37,7 @@ github "cp3hnu/TransitionKit"
 ### SemiModel Transition
 
 ```swift
-private let semiModelTransition = SemiModelTransition(distance: 200)
+private let semiModelTransition = SemiModelTransition(distanceFromTop: 200)
 
 func present() {
 	let controller = SecondViewController()
@@ -66,3 +66,10 @@ override func viewDidLoad() {
 
 ##Requirements
 iOS 8.0+
+
+
+
+## License
+
+Released under the MIT license. See LICENSE for details.
+

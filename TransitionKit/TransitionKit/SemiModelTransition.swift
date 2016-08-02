@@ -13,10 +13,10 @@ public final class SemiModelTransition: NSObject, UIViewControllerTransitioningD
     private var animator: SemiModelAnimatedTransitioning!
     private var interactiveAnimator: SemiModelInteractiveTransition!
     
-    public init(distance: CGFloat = 100, duration: NSTimeInterval = 0.3) {
-        animator = SemiModelAnimatedTransitioning(distance: distance)
+    public init(distanceFromTop: CGFloat = 100, duration: NSTimeInterval = 0.3) {
+        animator = SemiModelAnimatedTransitioning(distanceFromTop: distanceFromTop)
         animator.duration = duration
-        interactiveAnimator = SemiModelInteractiveTransition(distance: distance)
+        interactiveAnimator = SemiModelInteractiveTransition(distanceFromTop: distanceFromTop)
         super.init()
     }
     

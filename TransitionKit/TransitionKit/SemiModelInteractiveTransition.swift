@@ -15,8 +15,8 @@ public class SemiModelInteractiveTransition: UIPercentDrivenInteractiveTransitio
     private var shouldCompleteTransition = false
     private weak var controller: UIViewController?
     
-    public init(distance: CGFloat = 100) {
-        distanceFromTop = distance
+    public init(distanceFromTop: CGFloat = 100) {
+        self.distanceFromTop = distanceFromTop
         super.init()
     }
     

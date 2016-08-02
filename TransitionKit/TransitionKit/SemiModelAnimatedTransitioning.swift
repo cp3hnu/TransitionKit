@@ -11,8 +11,8 @@ import UIKit
 public class SemiModelAnimatedTransitioning: BaseAnimatedTransitioning {
     private let distanceFromTop: CGFloat
     
-    public init(distance: CGFloat = 100) {
-        distanceFromTop = distance
+    public init(distanceFromTop: CGFloat = 100) {
+        self.distanceFromTop = distanceFromTop
         super.init()
     }
     

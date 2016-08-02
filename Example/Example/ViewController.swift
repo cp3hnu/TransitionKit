@@ -11,7 +11,7 @@ import TransitionKit
 
 class ViewController: UIViewController {
 
-    private let semiModelTransition = SemiModelTransition(distance: 200)
+    private let semiModelTransition = SemiModelTransition(distanceFromTop: 200)
     private let gateTransition = GateTransition(sawtoothCount: 1, sawtoothDistance: 0)
 
     override func viewDidLoad() {

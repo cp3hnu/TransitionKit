@@ -12,9 +12,9 @@
 		DB6B7C9A1D50337C00EDDE85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB6B7C981D50337C00EDDE85 /* Main.storyboard */; };
 		DB6B7C9C1D50337C00EDDE85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB6B7C9B1D50337C00EDDE85 /* Assets.xcassets */; };
 		DB6B7C9F1D50337C00EDDE85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB6B7C9D1D50337C00EDDE85 /* LaunchScreen.storyboard */; };
-		DB6B7CB51D50690E00EDDE85 /* TransitionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB6B7CB41D50690E00EDDE85 /* TransitionKit.framework */; };
-		DB6B7CB61D50690E00EDDE85 /* TransitionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DB6B7CB41D50690E00EDDE85 /* TransitionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DB6B7CB91D5069CB00EDDE85 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B7CB81D5069CB00EDDE85 /* SecondViewController.swift */; };
+		DB6B7CC71D509C0F00EDDE85 /* TransitionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB6B7CC61D509C0F00EDDE85 /* TransitionKit.framework */; };
+		DB6B7CC81D509C0F00EDDE85 /* TransitionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DB6B7CC61D509C0F00EDDE85 /* TransitionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DB6B7CB61D50690E00EDDE85 /* TransitionKit.framework in Embed Frameworks */,
+				DB6B7CC81D509C0F00EDDE85 /* TransitionKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,8 +39,8 @@
 		DB6B7C9B1D50337C00EDDE85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB6B7C9E1D50337C00EDDE85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB6B7CA01D50337C00EDDE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DB6B7CB41D50690E00EDDE85 /* TransitionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = TransitionKit.framework; path = "/Users/ZW/Library/Developer/Xcode/DerivedData/TransitionKit-cqnzpbunxfexlkchzjyfcgjxjhci/Build/Products/Debug-iphonesimulator/TransitionKit.framework"; sourceTree = "<absolute>"; };
 		DB6B7CB81D5069CB00EDDE85 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		DB6B7CC61D509C0F00EDDE85 /* TransitionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = TransitionKit.framework; path = "/Users/ZW/Library/Developer/Xcode/DerivedData/TransitionKit-cqnzpbunxfexlkchzjyfcgjxjhci/Build/Products/Debug-iphonesimulator/TransitionKit.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB6B7CB51D50690E00EDDE85 /* TransitionKit.framework in Frameworks */,
+				DB6B7CC71D509C0F00EDDE85 /* TransitionKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +58,7 @@
 		DB6B7C881D50337C00EDDE85 = {
 			isa = PBXGroup;
 			children = (
-				DB6B7CB41D50690E00EDDE85 /* TransitionKit.framework */,
+				DB6B7CC61D509C0F00EDDE85 /* TransitionKit.framework */,
 				DB6B7C931D50337C00EDDE85 /* Example */,
 				DB6B7C921D50337C00EDDE85 /* Products */,
 			);
