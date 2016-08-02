@@ -26,9 +26,9 @@ github "cp3hnu/TransitionKit"
 
 *   Add new run script
 
-         ```
-        /usr/local/bin/carthage copy-frameworks
-         ```
+    ```swift
+    /usr/local/bin/carthage copy-frameworks
+    ```
 
 *   Add Input files *$(SRCROOT)/Carthage/Build/iOS/TransitionKit.framework*
 
