@@ -16,7 +16,7 @@ extension UIImage {
         let width = size.width
         let height = size.height
         let widthGap = distance
-        let positiveCount = min(1, count)
+        let positiveCount = max(1, count)
         let heightGap = height/positiveCount.f
         
         let leftPath = CGPathCreateMutable()

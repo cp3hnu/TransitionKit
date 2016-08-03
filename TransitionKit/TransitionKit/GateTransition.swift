@@ -13,8 +13,9 @@ public class GateTransition: NSObject, UINavigationControllerDelegate {
     private var animator: GateAnimatedTransitioning!
     private var interactiveAnimator: GateInteractiveTransition!
     
-    public init(sawtoothCount: Int, sawtoothDistance: CGFloat) {
+    public init(sawtoothCount: Int = 1, sawtoothDistance: CGFloat = 0, duration: NSTimeInterval = 0.3) {
         animator = GateAnimatedTransitioning(sawtoothCount: sawtoothCount, sawtoothDistance: sawtoothDistance)
+        animator.duration = duration
         interactiveAnimator = GateInteractiveTransition()
         super.init()
     }

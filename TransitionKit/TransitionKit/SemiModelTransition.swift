@@ -8,7 +8,7 @@
 
 import Foundation
 
-public final class SemiModelTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
+public final class SemiModelTransition: NSObject, UIViewControllerTransitioningDelegate {
     
     private var animator: SemiModelAnimatedTransitioning!
     private var interactiveAnimator: SemiModelInteractiveTransition!

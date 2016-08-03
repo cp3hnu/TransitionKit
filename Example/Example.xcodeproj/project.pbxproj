@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		DB6B7C951D50337C00EDDE85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B7C941D50337C00EDDE85 /* AppDelegate.swift */; };
-		DB6B7C971D50337C00EDDE85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B7C961D50337C00EDDE85 /* ViewController.swift */; };
+		DB6B7C971D50337C00EDDE85 /* SemiModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B7C961D50337C00EDDE85 /* SemiModelViewController.swift */; };
 		DB6B7C9A1D50337C00EDDE85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB6B7C981D50337C00EDDE85 /* Main.storyboard */; };
 		DB6B7C9C1D50337C00EDDE85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB6B7C9B1D50337C00EDDE85 /* Assets.xcassets */; };
 		DB6B7C9F1D50337C00EDDE85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB6B7C9D1D50337C00EDDE85 /* LaunchScreen.storyboard */; };
-		DB6B7CB91D5069CB00EDDE85 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B7CB81D5069CB00EDDE85 /* SecondViewController.swift */; };
+		DB6B7CB91D5069CB00EDDE85 /* GateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B7CB81D5069CB00EDDE85 /* GateViewController.swift */; };
 		DB6B7CC71D509C0F00EDDE85 /* TransitionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB6B7CC61D509C0F00EDDE85 /* TransitionKit.framework */; };
 		DB6B7CC81D509C0F00EDDE85 /* TransitionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DB6B7CC61D509C0F00EDDE85 /* TransitionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DBD127361D519FE20054A847 /* CircleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD127351D519FE20054A847 /* CircleViewController.swift */; };
+		DBD127381D51A95B0054A847 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD127371D51A95B0054A847 /* TableViewController.swift */; };
+		DBD1273A1D51B9660054A847 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD127391D51B9660054A847 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,13 +37,16 @@
 /* Begin PBXFileReference section */
 		DB6B7C911D50337C00EDDE85 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB6B7C941D50337C00EDDE85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DB6B7C961D50337C00EDDE85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DB6B7C961D50337C00EDDE85 /* SemiModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemiModelViewController.swift; sourceTree = "<group>"; };
 		DB6B7C991D50337C00EDDE85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DB6B7C9B1D50337C00EDDE85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB6B7C9E1D50337C00EDDE85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB6B7CA01D50337C00EDDE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DB6B7CB81D5069CB00EDDE85 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		DB6B7CB81D5069CB00EDDE85 /* GateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GateViewController.swift; sourceTree = "<group>"; };
 		DB6B7CC61D509C0F00EDDE85 /* TransitionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = TransitionKit.framework; path = "/Users/ZW/Library/Developer/Xcode/DerivedData/TransitionKit-cqnzpbunxfexlkchzjyfcgjxjhci/Build/Products/Debug-iphonesimulator/TransitionKit.framework"; sourceTree = "<absolute>"; };
+		DBD127351D519FE20054A847 /* CircleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleViewController.swift; sourceTree = "<group>"; };
+		DBD127371D51A95B0054A847 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		DBD127391D51B9660054A847 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +82,11 @@
 			isa = PBXGroup;
 			children = (
 				DB6B7C941D50337C00EDDE85 /* AppDelegate.swift */,
-				DB6B7C961D50337C00EDDE85 /* ViewController.swift */,
-				DB6B7CB81D5069CB00EDDE85 /* SecondViewController.swift */,
+				DBD127371D51A95B0054A847 /* TableViewController.swift */,
+				DB6B7C961D50337C00EDDE85 /* SemiModelViewController.swift */,
+				DB6B7CB81D5069CB00EDDE85 /* GateViewController.swift */,
+				DBD127351D519FE20054A847 /* CircleViewController.swift */,
+				DBD127391D51B9660054A847 /* ViewController.swift */,
 				DB6B7C981D50337C00EDDE85 /* Main.storyboard */,
 				DB6B7C9B1D50337C00EDDE85 /* Assets.xcassets */,
 				DB6B7C9D1D50337C00EDDE85 /* LaunchScreen.storyboard */,
@@ -158,8 +167,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB6B7CB91D5069CB00EDDE85 /* SecondViewController.swift in Sources */,
-				DB6B7C971D50337C00EDDE85 /* ViewController.swift in Sources */,
+				DBD1273A1D51B9660054A847 /* ViewController.swift in Sources */,
+				DB6B7CB91D5069CB00EDDE85 /* GateViewController.swift in Sources */,
+				DB6B7C971D50337C00EDDE85 /* SemiModelViewController.swift in Sources */,
+				DBD127361D519FE20054A847 /* CircleViewController.swift in Sources */,
+				DBD127381D51A95B0054A847 /* TableViewController.swift in Sources */,
 				DB6B7C951D50337C00EDDE85 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +322,7 @@
 				DB6B7CA51D50337C00EDDE85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -11,7 +11,7 @@ import Foundation
 extension UIView {
     func splitIntoTwoSawtoothParts(distance distance: CGFloat, count: Int) -> [UIView] {
         let image = captureViewSnapshot()
-        let array = image.splitIntoTwoSawtoothParts(distance:distance, count: count)
+        let array = image.splitIntoTwoSawtoothParts(distance: distance, count: count)
         return [UIImageView(image: array[0]), UIImageView(image: array[1])]
     }
     

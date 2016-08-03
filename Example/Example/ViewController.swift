@@ -2,33 +2,29 @@
 //  ViewController.swift
 //  Example
 //
-//  Created by CP3 on 16/8/2.
+//  Created by CP3 on 16/8/3.
 //  Copyright © 2016年 CP3. All rights reserved.
 //
 
 import UIKit
 import TransitionKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CircleTransitionClicked {
 
-    private let semiModelTransition = SemiModelTransition(distanceFromTop: 200)
-    private let gateTransition = GateTransition(sawtoothCount: 1, sawtoothDistance: 0)
+    var clickedPoint: CGPoint = CGPoint.zero
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "First"
-        navigationController?.delegate = gateTransition
-    }
 
-    @IBAction func push(sender: AnyObject) {
-        let controller = SecondViewController()
-        navigationController?.pushViewController(controller, animated: true)
+        title = "Detail"
+        view.backgroundColor = UIColor.redColor()
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
     }
     
-    @IBAction func present(sender: AnyObject) {
-        let controller = SecondViewController()
-        controller.transitioningDelegate = semiModelTransition
-        presentViewController(controller, animated: true, completion: nil)
+    func tap(gesture: UITapGestureRecognizer) {
+        let point = gesture.locationInView(view)
+        clickedPoint = point
+        navigationController?.popViewControllerAnimated(true)
     }
 }
-

@@ -17,6 +17,6 @@ public class BaseAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransi
     }
     
     public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        fatalError()
+        fatalError("animateTransition(transitionContext:) has not been implemented")
     }
 }
