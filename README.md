@@ -1,6 +1,6 @@
 # TransitionKit
 
-## Type
+## Style
 
 * Semi Model Transition
 
@@ -43,7 +43,7 @@ github "cp3hnu/TransitionKit"
 *   Add new run script
 
     ```swift
-      /usr/local/bin/carthage copy-frameworks
+        /usr/local/bin/carthage copy-frameworks
     ```
 
 *   Add Input files *$(SRCROOT)/Carthage/Build/iOS/TransitionKit.framework*
