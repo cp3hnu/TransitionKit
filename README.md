@@ -1,6 +1,16 @@
 # TransitionKit
 
-###Screenshot 
+## Type
+
+* Semi Model Transition
+
+* Gate Transition
+
+* Circle Transition
+
+  ​
+
+## Screenshot
 
 #### SemiModel Transition
 
@@ -14,9 +24,15 @@
 
 
 
+#### Circle Transition
+
+![](Demo_Circle.gif)
+
+
+
 ## Installation
 
-### Carthage
+#### Carthage
 
 ```swift
 github "cp3hnu/TransitionKit"
@@ -27,31 +43,32 @@ github "cp3hnu/TransitionKit"
 *   Add new run script
 
     ```swift
-    /usr/local/bin/carthage copy-frameworks
+      /usr/local/bin/carthage copy-frameworks
     ```
 
 *   Add Input files *$(SRCROOT)/Carthage/Build/iOS/TransitionKit.framework*
 
 
+
+
 ##Getting Started
-### SemiModel Transition
+
+#### SemiModel Transition
 
 ```swift
 private let semiModelTransition = SemiModelTransition(distanceFromTop: 200)
 
 func present() {
 	let controller = SecondViewController()
+	controller.modalPresentationStyle = .Custom
 	controller.transitioningDelegate = semiModelTransition
 	presentViewController(controller, animated: true, completion: nil)
 }
-
-//SecondViewController.swift
-init() {
-    modalPresentationStyle = .Custom
-}
 ```
 
-### Gate Transition
+
+
+#### Gate Transition
 
 ```swift
 private let gateTransition = GateTransition(sawtoothCount: 20, sawtoothDistance: 20)
@@ -64,8 +81,23 @@ override func viewDidLoad() {
 
 
 
+#### Circle Transition
+
+```swift
+private let circleTransition = CircleTransition()
+
+override func viewDidLoad() {
+	super.viewDidLoad()
+    navigationController?.delegate = circleTransition
+}
+```
+
+
+
 ##Requirements
 iOS 8.0+
+
+Xcode 7.3+
 
 
 
