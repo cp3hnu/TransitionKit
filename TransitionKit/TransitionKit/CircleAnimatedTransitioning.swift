@@ -15,9 +15,9 @@ public class CircleAnimatedTransitioning: BaseAnimatedTransitioning {
     public override func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         self.transitionContext = transitionContext
         
-        let containerView = transitionContext.containerView()!
         let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        let containerView = transitionContext.containerView()!
         containerView.addSubview(toVC.view)
         
         var point = CGPoint.zero
@@ -43,8 +43,9 @@ public class CircleAnimatedTransitioning: BaseAnimatedTransitioning {
     }
     
     public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-        transitionContext?.completeTransition(!transitionContext!.transitionWasCancelled())
         let toVC = transitionContext?.viewControllerForKey(UITransitionContextToViewControllerKey)
         toVC?.view.layer.mask = nil
+        let cancelled = transitionContext?.transitionWasCancelled() ?? false
+        transitionContext?.completeTransition(!cancelled)
     }
 }

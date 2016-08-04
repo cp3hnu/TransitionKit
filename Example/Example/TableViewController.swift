@@ -10,7 +10,7 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
-    let array = ["SemiModel", "Gate", "Circle"]
+    let array = ["SemiModel", "Gate", "Circle", "Transform", "Book"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,6 +42,10 @@ class TableViewController: UITableViewController {
             controller = GateViewController()
         case 2:
             controller = CircleViewController()
+        case 3:
+            controller = TransformViewController()
+        case 4:
+            controller = BookViewController()
         default:
             break
         }

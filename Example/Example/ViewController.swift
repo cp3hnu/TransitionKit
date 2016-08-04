@@ -19,12 +19,20 @@ class ViewController: UIViewController, CircleTransitionClicked {
         title = "Detail"
         view.backgroundColor = UIColor.redColor()
         
+        let imageView = UIImageView(image: UIImage(named: "b"))
+        imageView.frame = view.bounds
+        view.addSubview(imageView)
+        
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
     }
     
     func tap(gesture: UITapGestureRecognizer) {
         let point = gesture.locationInView(view)
         clickedPoint = point
-        navigationController?.popViewControllerAnimated(true)
+        if let navi = navigationController {
+           navi.popViewControllerAnimated(true)
+        } else {
+            dismissViewControllerAnimated(true, completion: nil)
+        }
     }
 }

@@ -1,24 +1,18 @@
 //
-//  SemiModelInteractiveTransition.swift
+//  BookInteractiveTransition.swift
 //  TransitionKit
 //
-//  Created by CP3 on 16/8/2.
+//  Created by CP3 on 16/8/4.
 //  Copyright © 2016年 CP3. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-public class SemiModelInteractiveTransition: UIPercentDrivenInteractiveTransition {
-    
+public class BookInteractiveTransition: UIPercentDrivenInteractiveTransition {
     public var interactionInProgress = false
-    private let distanceFromTop: CGFloat
+    public var isPresent = true
     private var shouldCompleteTransition = false
     private weak var controller: UIViewController?
-    
-    public init(distanceFromTop: CGFloat = 100) {
-        self.distanceFromTop = distanceFromTop
-        super.init()
-    }
     
     public func wireToViewController(vc: UIViewController) {
         controller = vc
@@ -33,11 +27,15 @@ public class SemiModelInteractiveTransition: UIPercentDrivenInteractiveTransitio
         switch sender.state {
         case .Began:
             interactionInProgress = true
-            vc.dismissViewControllerAnimated(true, completion: nil)
+            if isPresent {
+                vc.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                vc.navigationController?.popViewControllerAnimated(true)
+            }
         case .Changed:
-            let height = vc.view.bounds.height - distanceFromTop
-            let fraction = point.y/height
-            shouldCompleteTransition = fraction > 0.5
+            let width = vc.view.bounds.width
+            let fraction = point.x/width
+            shouldCompleteTransition = fraction > 0.3
             updateInteractiveTransition(fraction)
         case .Ended, .Cancelled:
             interactionInProgress = false
