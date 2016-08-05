@@ -20,6 +20,10 @@ class CircleViewController: UIViewController, CircleTransitionClicked {
         title = "Circle"
         view.backgroundColor = UIColor.whiteColor()
         
+        let imageView = UIImageView(image: UIImage(named: "a"))
+        imageView.frame = view.bounds
+        view.addSubview(imageView)
+        
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
     }
     

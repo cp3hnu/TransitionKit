@@ -19,6 +19,10 @@ class GateViewController: UIViewController {
         title = "Gate"
         view.backgroundColor = UIColor.whiteColor()
         
+        let imageView = UIImageView(image: UIImage(named: "a"))
+        imageView.frame = view.bounds
+        view.addSubview(imageView)
+        
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap)))
     }
     

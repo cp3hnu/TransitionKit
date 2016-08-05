@@ -34,10 +34,11 @@ public class CircleAnimatedTransitioning: BaseAnimatedTransitioning {
         maskLayer.path = circleMaskPathFinal.CGPath
         toVC.view.layer.mask = maskLayer
         
+        let duration = transitionDuration(transitionContext)
         let animation = CABasicAnimation(keyPath: "path")
         animation.fromValue = circleMaskPathInitial.CGPath
         animation.toValue = circleMaskPathFinal.CGPath
-        animation.duration = transitionDuration(transitionContext)
+        animation.duration = duration
         animation.delegate = self
         maskLayer.addAnimation(animation, forKey: "path")
     }

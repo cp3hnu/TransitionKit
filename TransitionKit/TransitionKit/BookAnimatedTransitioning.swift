@@ -9,8 +9,7 @@
 import UIKit
 
 public class BookAnimatedTransitioning: BaseAnimatedTransitioning {
-    weak var transitionContext: UIViewControllerContextTransitioning?
-    
+   
     private var identityTransform: CATransform3D {
         var transform = CATransform3DIdentity
         transform.m34 = -1.0/1000
@@ -23,52 +22,30 @@ public class BookAnimatedTransitioning: BaseAnimatedTransitioning {
         return transform
     }
     
-    private var fromAnimation: CABasicAnimation {
-        let animation = CABasicAnimation(keyPath: "transform")
-        animation.fromValue = NSValue(CATransform3D: identityTransform)
-        animation.toValue = NSValue(CATransform3D: middleTransform)
-        animation.duration = transitionDuration(transitionContext)
-        animation.delegate = self
-        return animation
-    }
-    
-    private var toAnimation: CABasicAnimation {
-        let animation = CABasicAnimation(keyPath: "transform")
-        animation.fromValue = NSValue(CATransform3D: middleTransform)
-        animation.toValue = NSValue(CATransform3D: identityTransform)
-        animation.duration = transitionDuration(transitionContext)
-        animation.removedOnCompletion = true
-        animation.delegate = self
-        return animation
-    }
-    
     public override func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        self.transitionContext = transitionContext
-        
+
         let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         let containerView = transitionContext.containerView()!
-        
         containerView.addSubview(toVC.view)
-        
+        let anchorPoint = CGPoint(x: 0, y: 0.5)
         if !dismiss {
             containerView.sendSubviewToBack(toVC.view)
-            
-            fromVC.view.layer.zPosition = 1000
-            fromVC.view.setAnchorPoint(CGPoint(x: 0, y: 0.5))
-            fromVC.view.layer.transform = middleTransform
-            fromVC.view.layer.addAnimation(fromAnimation, forKey: "fromVC")
+            fromVC.view.setAnchorPoint(anchorPoint)
         } else {
-            toVC.view.layer.zPosition = 1000
-            toVC.view.setAnchorPoint(CGPoint(x: 0, y: 0.5))
-            toVC.view.layer.transform = identityTransform
-            toVC.view.layer.addAnimation(toAnimation, forKey: "toVC")
+            toVC.view.setAnchorPoint(anchorPoint)
         }
-    }
-    
-    public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-        let cancelled = transitionContext?.transitionWasCancelled() ?? false
-        transitionContext?.completeTransition(!cancelled)
+        
+        let duration = transitionDuration(transitionContext)
+        UIView.animateWithDuration(duration, animations: {
+            if !self.dismiss {
+                fromVC.view.layer.transform = self.middleTransform
+            } else {
+                toVC.view.layer.transform = self.identityTransform
+            }
+            }, completion: { _ in
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+        })
     }
 }
 
