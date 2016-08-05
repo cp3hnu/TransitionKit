@@ -8,7 +8,7 @@
 
 * Circle Transition
 
-* Transform Transition
+* Rotation Transition
 
 * Book Transition
 
@@ -34,9 +34,9 @@
 
 
 
-#### Transform Transition
+#### Rotation Transition
 
-![](Demo_Transform.gif)
+![](Demo_Rotation.gif)
 
 
 

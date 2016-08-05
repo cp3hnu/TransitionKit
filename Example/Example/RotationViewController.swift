@@ -1,5 +1,5 @@
 //
-//  TransformViewController.swift
+//  RotationViewController.swift
 //  Example
 //
 //  Created by CP3 on 16/8/4.
@@ -9,13 +9,13 @@
 import UIKit
 import TransitionKit
 
-class TransformViewController: UIViewController {
+class RotationViewController: UIViewController {
 
-    private let transformTransition = TransformTransition(duration: 0.3)
+    private let rotationTransition = RotationTransition(duration: 0.3)
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Transform"
+        title = "Rotation"
         view.backgroundColor = UIColor.whiteColor()
         
         let imageView = UIImageView(image: UIImage(named: "a"))
@@ -33,7 +33,7 @@ class TransformViewController: UIViewController {
     
     func tap(gesture: UITapGestureRecognizer) {
         let vc = ViewController()
-        navigationController?.delegate = transformTransition
+        navigationController?.delegate = rotationTransition
         navigationController?.pushViewController(vc, animated: true)
         
         //vc.transitioningDelegate = transformTransition

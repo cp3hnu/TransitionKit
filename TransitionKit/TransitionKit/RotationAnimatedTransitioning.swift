@@ -1,5 +1,5 @@
 //
-//  TransformAnimatedTransitioning.swift
+//  RotationAnimatedTransitioning.swift
 //  TransitionKit
 //
 //  Created by CP3 on 16/8/4.
@@ -10,7 +10,7 @@ import UIKit
 
 private let AnimationKey = "animationID"
 
-public class TransformAnimatedTransitioning: BaseAnimatedTransitioning {
+public class RotationAnimatedTransitioning: BaseAnimatedTransitioning {
     
     private var identityTransform: CATransform3D {
         var transform = CATransform3DIdentity

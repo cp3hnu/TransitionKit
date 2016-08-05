@@ -9,10 +9,9 @@
 import UIKit
 import TransitionKit
 
-class CircleViewController: UIViewController, CircleTransitionClicked {
+class CircleViewController: UIViewController {
     
     private let circleTransition = CircleTransition()
-    var clickedPoint: CGPoint = CGPoint.zero
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,7 @@ class CircleViewController: UIViewController, CircleTransitionClicked {
     
     func tap(gesture: UITapGestureRecognizer) {
         let point = gesture.locationInView(view)
-        clickedPoint = point
+        circleTransition.clickedPoint = point
 
         let vc = ViewController()
         navigationController?.delegate = circleTransition

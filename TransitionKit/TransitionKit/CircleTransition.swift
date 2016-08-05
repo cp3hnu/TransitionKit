@@ -11,6 +11,11 @@ import UIKit
 public class CircleTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
     
     private var animator = CircleAnimatedTransitioning()
+    public var clickedPoint = CGPoint.zero {
+        didSet {
+            animator.clickedPoint = clickedPoint
+        }
+    }
     
     public init(duration: NSTimeInterval = 0.3) {
         super.init()
@@ -18,27 +23,14 @@ public class CircleTransition: NSObject, UIViewControllerTransitioningDelegate, 
     }
     
     public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        if presenting is CircleTransitionClicked {
-            return animator
-        }
-        
-        return nil
+        return animator
     }
     
     public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if dismissed is CircleTransitionClicked {
-            return animator
-        }
-        
-        return nil
+        return animator
     }
     
     public func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if (operation == .Push && fromVC is CircleTransitionClicked) || (operation == .Pop && toVC is CircleTransitionClicked) {
-            return animator
-        }
-        
-        return nil
+        return animator
     }
 }

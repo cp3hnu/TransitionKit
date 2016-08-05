@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DB5246F71D52D68800DF2F5F /* TransformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5246F61D52D68800DF2F5F /* TransformViewController.swift */; };
+		DB5246F71D52D68800DF2F5F /* RotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5246F61D52D68800DF2F5F /* RotationViewController.swift */; };
 		DB5246FE1D530CAE00DF2F5F /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5246FD1D530CAE00DF2F5F /* BookViewController.swift */; };
 		DB6B7C951D50337C00EDDE85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B7C941D50337C00EDDE85 /* AppDelegate.swift */; };
 		DB6B7C971D50337C00EDDE85 /* SemiModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B7C961D50337C00EDDE85 /* SemiModelViewController.swift */; };
@@ -37,7 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		DB5246F61D52D68800DF2F5F /* TransformViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformViewController.swift; sourceTree = "<group>"; };
+		DB5246F61D52D68800DF2F5F /* RotationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotationViewController.swift; sourceTree = "<group>"; };
 		DB5246FD1D530CAE00DF2F5F /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		DB6B7C911D50337C00EDDE85 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB6B7C941D50337C00EDDE85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 				DB6B7C961D50337C00EDDE85 /* SemiModelViewController.swift */,
 				DB6B7CB81D5069CB00EDDE85 /* GateViewController.swift */,
 				DBD127351D519FE20054A847 /* CircleViewController.swift */,
-				DB5246F61D52D68800DF2F5F /* TransformViewController.swift */,
+				DB5246F61D52D68800DF2F5F /* RotationViewController.swift */,
 				DB5246FD1D530CAE00DF2F5F /* BookViewController.swift */,
 				DBD127391D51B9660054A847 /* ViewController.swift */,
 				DB6B7C981D50337C00EDDE85 /* Main.storyboard */,
@@ -173,7 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB5246F71D52D68800DF2F5F /* TransformViewController.swift in Sources */,
+				DB5246F71D52D68800DF2F5F /* RotationViewController.swift in Sources */,
 				DBD1273A1D51B9660054A847 /* ViewController.swift in Sources */,
 				DB6B7CB91D5069CB00EDDE85 /* GateViewController.swift in Sources */,
 				DB6B7C971D50337C00EDDE85 /* SemiModelViewController.swift in Sources */,

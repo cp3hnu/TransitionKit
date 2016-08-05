@@ -10,7 +10,8 @@ import UIKit
 
 public class CircleAnimatedTransitioning: BaseAnimatedTransitioning {
  
-    weak var transitionContext: UIViewControllerContextTransitioning?
+    public var clickedPoint = CGPoint.zero
+    private weak var transitionContext: UIViewControllerContextTransitioning?
     
     public override func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         self.transitionContext = transitionContext
@@ -20,11 +21,7 @@ public class CircleAnimatedTransitioning: BaseAnimatedTransitioning {
         let containerView = transitionContext.containerView()!
         containerView.addSubview(toVC.view)
         
-        var point = CGPoint.zero
-        if let clickedVC = fromVC as? CircleTransitionClicked {
-           point = clickedVC.clickedPoint
-        }
-        
+        let point = clickedPoint
         let circleMaskPathInitial = UIBezierPath(arcCenter: point, radius: 2, startAngle: 0, endAngle: 2 * M_PI.f, clockwise: true)
         let extremePoint = CGPoint(x: max(CGRectGetWidth(fromVC.view.bounds) - point.x, point.x), y: max(CGRectGetHeight(fromVC.view.bounds) - point.y, point.y))
         let radius = sqrt((extremePoint.x * extremePoint.x) + (extremePoint.y * extremePoint.y))

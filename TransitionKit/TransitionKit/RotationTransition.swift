@@ -1,5 +1,5 @@
 //
-//  TransformTransition.swift
+//  RotationTransition.swift
 //  TransitionKit
 //
 //  Created by CP3 on 16/8/4.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-public class TransformTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
+public class RotationTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
     
-    private var animator = TransformAnimatedTransitioning()
+    private var animator = RotationAnimatedTransitioning()
     
     public init(duration: NSTimeInterval = 0.3) {
         super.init()
