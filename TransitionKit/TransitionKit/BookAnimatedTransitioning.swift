@@ -8,9 +8,9 @@
 
 import UIKit
 
-public class BookAnimatedTransitioning: BaseAnimatedTransitioning {
+class BookAnimatedTransitioning: BaseAnimatedTransitioning {
    
-    override public func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
+    override func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
         containerView.layer.sublayerTransform = perspectiveTransform
         containerView.addSubview(toVC.view)
         let anchorPoint = CGPoint(x: 0, y: 0.5)

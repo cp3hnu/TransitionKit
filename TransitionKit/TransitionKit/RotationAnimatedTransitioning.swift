@@ -10,7 +10,7 @@ import UIKit
 
 private let AnimationKey = "animationID"
 
-public class RotationAnimatedTransitioning: BaseAnimatedTransitioning {
+class RotationAnimatedTransitioning: BaseAnimatedTransitioning {
 
     private var viewWidth: CGFloat = UIScreen.mainScreen().bounds.width
     
@@ -40,7 +40,7 @@ public class RotationAnimatedTransitioning: BaseAnimatedTransitioning {
         return transform
     }
     
-    override public func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
+    override func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
         viewWidth = fromVC.view.bounds.width
         containerView.layer.sublayerTransform = perspectiveTransform
         containerView.addSubview(toVC.view)

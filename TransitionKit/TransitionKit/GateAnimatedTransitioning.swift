@@ -8,19 +8,19 @@
 
 import UIKit
 
-public class GateAnimatedTransitioning: BaseAnimatedTransitioning {
+class GateAnimatedTransitioning: BaseAnimatedTransitioning {
     private let sawtoothCount: Int
     private let sawtoothDistance: CGFloat
     private let scale: CGFloat = 0.5
     
-    public init(sawtoothCount: Int, sawtoothDistance: CGFloat) {
+    init(sawtoothCount: Int, sawtoothDistance: CGFloat) {
         self.sawtoothCount = sawtoothCount
         self.sawtoothDistance = sawtoothDistance
         
         super.init()
     }
     
-   override public func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
+   override func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
         let view = !dismiss ? fromVC.view : toVC.view
         let array: [UIView] = view.splitIntoTwoSawtoothParts(distance: sawtoothDistance, count: sawtoothCount)
         let leftView: UIView = array[0]

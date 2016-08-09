@@ -1,21 +1,21 @@
 //
-//  BookViewController.swift
+//  FlipViewController.swift
 //  Example
 //
-//  Created by CP3 on 16/8/4.
+//  Created by CP3 on 16/8/9.
 //  Copyright © 2016年 CP3. All rights reserved.
 //
 
 import UIKit
 import TransitionKit
 
-class BookViewController: UIViewController {
+class FlipViewController: UIViewController {
 
-    private let bookTransition = BookTransition(duration: 0.5)
+    private let rotationTransition = FlipTransition(duration: 0.6)
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Book"
+        title = "Flip"
         view.backgroundColor = UIColor.whiteColor()
         
         let imageView = UIImageView(image: UIImage(named: "a"))
@@ -33,10 +33,10 @@ class BookViewController: UIViewController {
     
     func tap(gesture: UITapGestureRecognizer) {
         let vc = ViewController()
-        navigationController?.delegate = bookTransition
+        navigationController?.delegate = rotationTransition
         navigationController?.pushViewController(vc, animated: true)
         
-        //vc.transitioningDelegate = bookTransition
+        //vc.transitioningDelegate = transformTransition
         //presentViewController(vc, animated: true, completion: nil)
     }
 }

@@ -8,12 +8,12 @@
 
 import UIKit
 
-public class CircleAnimatedTransitioning: BaseAnimatedTransitioning {
+class CircleAnimatedTransitioning: BaseAnimatedTransitioning {
  
-    public var clickedPoint = CGPoint.zero
+    var clickedPoint = CGPoint.zero
     private weak var transitionContext: UIViewControllerContextTransitioning?
     
-    override public func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
+    override func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
         self.transitionContext = transitionContext
         containerView.addSubview(toVC.view)
         
@@ -35,7 +35,7 @@ public class CircleAnimatedTransitioning: BaseAnimatedTransitioning {
         maskLayer.addAnimation(animation, forKey: "path")
     }
     
-    public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         let toVC = transitionContext?.viewControllerForKey(UITransitionContextToViewControllerKey)
         toVC?.view.layer.mask = nil
         let cancelled = transitionContext?.transitionWasCancelled() ?? false

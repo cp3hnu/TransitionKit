@@ -21,6 +21,7 @@
 		DBD1273A1D51B9660054A847 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD127391D51B9660054A847 /* ViewController.swift */; };
 		DBFFB2DD1D59B310008CB53C /* TransitionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFFB2DC1D59B310008CB53C /* TransitionKit.framework */; };
 		DBFFB2DE1D59B310008CB53C /* TransitionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DBFFB2DC1D59B310008CB53C /* TransitionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DBFFB2E61D59C449008CB53C /* FlipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFFB2E51D59C449008CB53C /* FlipViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +54,7 @@
 		DBD127371D51A95B0054A847 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		DBD127391D51B9660054A847 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DBFFB2DC1D59B310008CB53C /* TransitionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = TransitionKit.framework; path = "/Users/ZW/Library/Developer/Xcode/DerivedData/TransitionKit-cqnzpbunxfexlkchzjyfcgjxjhci/Build/Products/Debug-iphoneos/TransitionKit.framework"; sourceTree = "<absolute>"; };
+		DBFFB2E51D59C449008CB53C /* FlipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				DB5246F61D52D68800DF2F5F /* RotationViewController.swift */,
 				DB5246FD1D530CAE00DF2F5F /* BookViewController.swift */,
 				DB0E17701D55F0BF005D575E /* CubeViewController.swift */,
+				DBFFB2E51D59C449008CB53C /* FlipViewController.swift */,
 				DBD127391D51B9660054A847 /* ViewController.swift */,
 				DB6B7C981D50337C00EDDE85 /* Main.storyboard */,
 				DB6B7C9B1D50337C00EDDE85 /* Assets.xcassets */,
@@ -179,6 +182,7 @@
 				DB5246F71D52D68800DF2F5F /* RotationViewController.swift in Sources */,
 				DBD1273A1D51B9660054A847 /* ViewController.swift in Sources */,
 				DB6B7CB91D5069CB00EDDE85 /* GateViewController.swift in Sources */,
+				DBFFB2E61D59C449008CB53C /* FlipViewController.swift in Sources */,
 				DB6B7C971D50337C00EDDE85 /* SemiModelViewController.swift in Sources */,
 				DBD127361D519FE20054A847 /* CircleViewController.swift in Sources */,
 				DB5246FE1D530CAE00DF2F5F /* BookViewController.swift in Sources */,

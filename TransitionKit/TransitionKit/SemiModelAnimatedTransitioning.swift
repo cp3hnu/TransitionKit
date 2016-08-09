@@ -8,15 +8,15 @@
 
 import UIKit
 
-public class SemiModelAnimatedTransitioning: BaseAnimatedTransitioning {
+class SemiModelAnimatedTransitioning: BaseAnimatedTransitioning {
     private let distanceFromTop: CGFloat
     
-    public init(distanceFromTop: CGFloat = 100) {
+    init(distanceFromTop: CGFloat = 100) {
         self.distanceFromTop = distanceFromTop
         super.init()
     }
     
-    override public func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
+    override func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
         var t1 = CATransform3DIdentity
         t1.m34 = -1.0/900
         t1 = CATransform3DScale(t1, 0.95, 0.95, 1)
