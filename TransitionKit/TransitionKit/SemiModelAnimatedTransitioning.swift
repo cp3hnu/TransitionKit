@@ -16,12 +16,7 @@ public class SemiModelAnimatedTransitioning: BaseAnimatedTransitioning {
         super.init()
     }
     
-    public override func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-        let containerView = transitionContext.containerView()!
-        let duration = transitionDuration(transitionContext)
-        
+    override public func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
         var t1 = CATransform3DIdentity
         t1.m34 = -1.0/900
         t1 = CATransform3DScale(t1, 0.95, 0.95, 1)

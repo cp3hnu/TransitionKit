@@ -1,21 +1,21 @@
 //
-//  BookViewController.swift
+//  CubeViewController.swift
 //  Example
 //
-//  Created by CP3 on 16/8/4.
+//  Created by CP3 on 16/8/6.
 //  Copyright © 2016年 CP3. All rights reserved.
 //
 
 import UIKit
 import TransitionKit
 
-class BookViewController: UIViewController {
+class CubeViewController: UIViewController {
 
-    private let bookTransition = BookTransition(duration: 3)
+    private let bookTransition = CubeTransition(duration: 0.3)
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Book"
+        title = "Cube"
         view.backgroundColor = UIColor.whiteColor()
         
         let imageView = UIImageView(image: UIImage(named: "a"))
@@ -35,8 +35,6 @@ class BookViewController: UIViewController {
         let vc = ViewController()
         navigationController?.delegate = bookTransition
         navigationController?.pushViewController(vc, animated: true)
-        
-        //vc.transitioningDelegate = bookTransition
-        //presentViewController(vc, animated: true, completion: nil)
     }
+
 }

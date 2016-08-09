@@ -20,12 +20,8 @@ public class GateAnimatedTransitioning: BaseAnimatedTransitioning {
         super.init()
     }
     
-    public override func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-        let containerView = transitionContext.containerView()!
+   override public func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
         let view = !dismiss ? fromVC.view : toVC.view
-        
         let array: [UIView] = view.splitIntoTwoSawtoothParts(distance: sawtoothDistance, count: sawtoothCount)
         let leftView: UIView = array[0]
         let rightView: UIView = array[1]
@@ -47,8 +43,7 @@ public class GateAnimatedTransitioning: BaseAnimatedTransitioning {
         let rightFinalFrame = !dismiss ? rightOffScreenFrame : rightFrame
         leftView.frame = leftInitialFrame
         rightView.frame = rightInitialFrame
-        
-        let duration = transitionDuration(transitionContext)
+    
         UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseInOut, animations: {
             leftView.frame = leftFinalFrame
             rightView.frame = rightFinalFrame

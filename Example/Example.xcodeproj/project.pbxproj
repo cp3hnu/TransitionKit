@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB0E17711D55F0BF005D575E /* CubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0E17701D55F0BF005D575E /* CubeViewController.swift */; };
 		DB5246F71D52D68800DF2F5F /* RotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5246F61D52D68800DF2F5F /* RotationViewController.swift */; };
 		DB5246FE1D530CAE00DF2F5F /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5246FD1D530CAE00DF2F5F /* BookViewController.swift */; };
 		DB6B7C951D50337C00EDDE85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B7C941D50337C00EDDE85 /* AppDelegate.swift */; };
@@ -15,21 +16,21 @@
 		DB6B7C9C1D50337C00EDDE85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB6B7C9B1D50337C00EDDE85 /* Assets.xcassets */; };
 		DB6B7C9F1D50337C00EDDE85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB6B7C9D1D50337C00EDDE85 /* LaunchScreen.storyboard */; };
 		DB6B7CB91D5069CB00EDDE85 /* GateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B7CB81D5069CB00EDDE85 /* GateViewController.swift */; };
-		DB6B7CC71D509C0F00EDDE85 /* TransitionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB6B7CC61D509C0F00EDDE85 /* TransitionKit.framework */; };
-		DB6B7CC81D509C0F00EDDE85 /* TransitionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DB6B7CC61D509C0F00EDDE85 /* TransitionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DBD127361D519FE20054A847 /* CircleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD127351D519FE20054A847 /* CircleViewController.swift */; };
 		DBD127381D51A95B0054A847 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD127371D51A95B0054A847 /* TableViewController.swift */; };
 		DBD1273A1D51B9660054A847 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD127391D51B9660054A847 /* ViewController.swift */; };
+		DBFFB2DD1D59B310008CB53C /* TransitionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFFB2DC1D59B310008CB53C /* TransitionKit.framework */; };
+		DBFFB2DE1D59B310008CB53C /* TransitionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DBFFB2DC1D59B310008CB53C /* TransitionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		DB6B7CB71D50690F00EDDE85 /* Embed Frameworks */ = {
+		DBFFB2DF1D59B310008CB53C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DB6B7CC81D509C0F00EDDE85 /* TransitionKit.framework in Embed Frameworks */,
+				DBFFB2DE1D59B310008CB53C /* TransitionKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,6 +38,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DB0E17701D55F0BF005D575E /* CubeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubeViewController.swift; sourceTree = "<group>"; };
 		DB5246F61D52D68800DF2F5F /* RotationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotationViewController.swift; sourceTree = "<group>"; };
 		DB5246FD1D530CAE00DF2F5F /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		DB6B7C911D50337C00EDDE85 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,10 +49,10 @@
 		DB6B7C9E1D50337C00EDDE85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB6B7CA01D50337C00EDDE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB6B7CB81D5069CB00EDDE85 /* GateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GateViewController.swift; sourceTree = "<group>"; };
-		DB6B7CC61D509C0F00EDDE85 /* TransitionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = TransitionKit.framework; path = "/Users/ZW/Library/Developer/Xcode/DerivedData/TransitionKit-cqnzpbunxfexlkchzjyfcgjxjhci/Build/Products/Debug-iphonesimulator/TransitionKit.framework"; sourceTree = "<absolute>"; };
 		DBD127351D519FE20054A847 /* CircleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleViewController.swift; sourceTree = "<group>"; };
 		DBD127371D51A95B0054A847 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		DBD127391D51B9660054A847 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DBFFB2DC1D59B310008CB53C /* TransitionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = TransitionKit.framework; path = "/Users/ZW/Library/Developer/Xcode/DerivedData/TransitionKit-cqnzpbunxfexlkchzjyfcgjxjhci/Build/Products/Debug-iphoneos/TransitionKit.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB6B7CC71D509C0F00EDDE85 /* TransitionKit.framework in Frameworks */,
+				DBFFB2DD1D59B310008CB53C /* TransitionKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +70,7 @@
 		DB6B7C881D50337C00EDDE85 = {
 			isa = PBXGroup;
 			children = (
-				DB6B7CC61D509C0F00EDDE85 /* TransitionKit.framework */,
+				DBFFB2DC1D59B310008CB53C /* TransitionKit.framework */,
 				DB6B7C931D50337C00EDDE85 /* Example */,
 				DB6B7C921D50337C00EDDE85 /* Products */,
 			);
@@ -92,6 +94,7 @@
 				DBD127351D519FE20054A847 /* CircleViewController.swift */,
 				DB5246F61D52D68800DF2F5F /* RotationViewController.swift */,
 				DB5246FD1D530CAE00DF2F5F /* BookViewController.swift */,
+				DB0E17701D55F0BF005D575E /* CubeViewController.swift */,
 				DBD127391D51B9660054A847 /* ViewController.swift */,
 				DB6B7C981D50337C00EDDE85 /* Main.storyboard */,
 				DB6B7C9B1D50337C00EDDE85 /* Assets.xcassets */,
@@ -111,7 +114,7 @@
 				DB6B7C8D1D50337C00EDDE85 /* Sources */,
 				DB6B7C8E1D50337C00EDDE85 /* Frameworks */,
 				DB6B7C8F1D50337C00EDDE85 /* Resources */,
-				DB6B7CB71D50690F00EDDE85 /* Embed Frameworks */,
+				DBFFB2DF1D59B310008CB53C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,6 +184,7 @@
 				DB5246FE1D530CAE00DF2F5F /* BookViewController.swift in Sources */,
 				DBD127381D51A95B0054A847 /* TableViewController.swift in Sources */,
 				DB6B7C951D50337C00EDDE85 /* AppDelegate.swift in Sources */,
+				DB0E17711D55F0BF005D575E /* CubeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

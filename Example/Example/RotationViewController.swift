@@ -11,7 +11,7 @@ import TransitionKit
 
 class RotationViewController: UIViewController {
 
-    private let rotationTransition = RotationTransition(duration: 0.3)
+    private let rotationTransition = RotationTransition(duration: 0.6)
     override func viewDidLoad() {
         super.viewDidLoad()
         

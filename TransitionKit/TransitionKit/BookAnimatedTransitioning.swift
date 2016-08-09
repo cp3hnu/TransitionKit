@@ -10,40 +10,30 @@ import UIKit
 
 public class BookAnimatedTransitioning: BaseAnimatedTransitioning {
    
-    private var identityTransform: CATransform3D {
-        var transform = CATransform3DIdentity
-        transform.m34 = -1.0/1000
-        return transform
-    }
-    
-    private var middleTransform: CATransform3D  {
-        var transform = CATransform3DMakeRotation(-M_PI_2.f, 0, 1, 0)
-        transform.m34 = 1.0/1000
-        return transform
-    }
-    
-    public override func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-
-        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-        let containerView = transitionContext.containerView()!
+    override public func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
+        containerView.layer.sublayerTransform = perspectiveTransform
         containerView.addSubview(toVC.view)
         let anchorPoint = CGPoint(x: 0, y: 0.5)
+        let transform = CATransform3DMakeRotation(-M_PI_2.f, 0, 1, 0)
         if !dismiss {
             containerView.sendSubviewToBack(toVC.view)
             fromVC.view.setAnchorPoint(anchorPoint)
         } else {
             toVC.view.setAnchorPoint(anchorPoint)
+            toVC.view.layer.transform = transform
         }
         
-        let duration = transitionDuration(transitionContext)
         UIView.animateWithDuration(duration, animations: {
             if !self.dismiss {
-                fromVC.view.layer.transform = self.middleTransform
+                fromVC.view.layer.transform = transform
             } else {
-                toVC.view.layer.transform = self.identityTransform
+                toVC.view.layer.transform = CATransform3DIdentity
             }
             }, completion: { _ in
+                if !self.dismiss {
+                    fromVC.view.layer.transform = CATransform3DIdentity
+                }
+                
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
         })
     }
