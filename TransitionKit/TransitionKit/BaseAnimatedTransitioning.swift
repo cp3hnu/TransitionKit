@@ -33,7 +33,7 @@ class BaseAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransitioning
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
-        fatalError("animateTransition(transitionContext:) has not been implemented")
+        fatalError("Has not been implemented")
     }
 }
 

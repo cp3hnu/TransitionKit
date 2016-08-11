@@ -12,6 +12,12 @@
 
 * Book Transition
 
+* Flip Transition
+
+* Cube Transition
+
+* Blur Transition
+
   ​
 
 ## Screenshot
@@ -45,6 +51,16 @@
 ![](Demo_Book.gif)
 
 
+
+![](Demo_Flip.gif)
+
+
+
+![](Demo_Cube.gif)
+
+
+
+![](Demo_Blur.gif)
 
 ## Installation
 
