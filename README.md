@@ -24,43 +24,49 @@
 
 #### SemiModel Transition
 
-![](Demo_SemiModel.gif)
+![](Gif/SemiModel.gif)
 
 
 
 #### Gate Transition
 
-![](Demo_Gate.gif)
+![](Gif/Gate.gif)
 
 
 
 #### Circle Transition
 
-![](Demo_Circle.gif)
+![](Gif/Circle.gif)
 
 
 
 #### Rotation Transition
 
-![](Demo_Rotation.gif)
+![](Gif/Rotation.gif)
 
 
 
 #### Book Transition
 
-![](Demo_Book.gif)
+![](Gif/Book.gif)
 
 
 
-![](Demo_Flip.gif)
+#### Flip Transition
+
+![](Gif/Flip.gif)
 
 
 
-![](Demo_Cube.gif)
+#### Cube Transition
+
+![](Gif/Cube.gif)
 
 
 
-![](Demo_Blur.gif)
+#### Blur Transition
+
+![](Gif/Blur.gif)
 
 ## Installation
 
