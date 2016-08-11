@@ -10,21 +10,17 @@ import UIKit
 
 class FlipAnimatedTransitioning: BaseAnimatedTransitioning {
     
-    private weak var transitionContext: UIViewControllerContextTransitioning?
     private var viewWidth: CGFloat = UIScreen.mainScreen().bounds.width
     
     override func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
-        self.transitionContext = transitionContext
-        
         let fromView = fromVC.view
         let toView = toVC.view
         viewWidth = fromVC.view.bounds.width
-        
         containerView.layer.sublayerTransform = perspectiveTransform
         
         let wrapperView: UIView = TransitionView(frame: fromView.frame)
         wrapperView.autoresizesSubviews = true
-        wrapperView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+        wrapperView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         containerView.addSubview(wrapperView)
         fromView.frame.origin = CGPoint.zero
         toView.frame.origin = CGPoint.zero

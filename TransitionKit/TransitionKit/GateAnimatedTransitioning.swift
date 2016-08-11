@@ -34,9 +34,9 @@ class GateAnimatedTransitioning: BaseAnimatedTransitioning {
             containerView.sendSubviewToBack(toVC.view)
         }
         let leftFrame = leftView.frame
-        let leftOffScreenFrame = CGRectOffset(leftView.bounds, -leftView.bounds.width/2 - 20, 0)
+        let leftOffScreenFrame = CGRectOffset(leftView.bounds, -leftView.bounds.width/2 - sawtoothDistance, 0)
         let rightFrame = rightView.frame
-        let rightOffScreenFrame = CGRectOffset(rightView.bounds, rightView.bounds.width/2 + 20, 0)
+        let rightOffScreenFrame = CGRectOffset(rightView.bounds, rightView.bounds.width/2 + sawtoothDistance, 0)
         let leftInitialFrame = !dismiss ? leftFrame : leftOffScreenFrame
         let leftFinalFrame = !dismiss ? leftOffScreenFrame : leftFrame
         let rightInitialFrame = !dismiss ? rightFrame : rightOffScreenFrame
@@ -60,7 +60,6 @@ class GateAnimatedTransitioning: BaseAnimatedTransitioning {
                 } else {
                     containerView.addSubview(toVC.view)
                     fromVC.view.transform = CGAffineTransformIdentity
-                    
                 }
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
         })

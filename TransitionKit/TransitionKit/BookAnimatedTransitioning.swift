@@ -14,7 +14,8 @@ class BookAnimatedTransitioning: BaseAnimatedTransitioning {
         containerView.layer.sublayerTransform = perspectiveTransform
         containerView.addSubview(toVC.view)
         let anchorPoint = CGPoint(x: 0, y: 0.5)
-        let transform = CATransform3DMakeRotation(-M_PI_2.f, 0, 1, 0)
+        var transform = CATransform3DMakeRotation(-M_PI_2.f, 0, 1, 0)
+        transform = CATransform3DScale(transform, 1.2, 1.2, 1)
         if !dismiss {
             containerView.sendSubviewToBack(toVC.view)
             fromVC.view.setAnchorPoint(anchorPoint)
@@ -30,31 +31,16 @@ class BookAnimatedTransitioning: BaseAnimatedTransitioning {
                 toVC.view.layer.transform = CATransform3DIdentity
             }
             }, completion: { _ in
-                if !self.dismiss {
-                    fromVC.view.layer.transform = CATransform3DIdentity
+                fromVC.view.layer.transform = CATransform3DIdentity
+                toVC.view.layer.transform = CATransform3DIdentity
+                fromVC.view.setAnchorPoint(CGPoint(x: 0.5, y: 0.5))
+                toVC.view.setAnchorPoint(CGPoint(x: 0.5, y: 0.5))
+                containerView.layer.sublayerTransform = CATransform3DIdentity
+                let cancelled = transitionContext.transitionWasCancelled()
+                if cancelled {
+                    toVC.view.removeFromSuperview()
                 }
-                
-                transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+                transitionContext.completeTransition(!cancelled)
         })
-    }
-}
-
-extension CGPoint {
-    mutating func translate(dx: CGFloat, _ dy: CGFloat) {
-        x -= dx
-        y -= dy
-    }
-}
-
-extension UIView {
-    func setAnchorPoint(point: CGPoint) {
-        let oldOrigin = frame.origin
-        layer.anchorPoint = point
-        let newOrigin = frame.origin
-        
-        let translateX = newOrigin.x - oldOrigin.x
-        let translateY = newOrigin.y - oldOrigin.y
-    
-        center.translate(translateX, translateY)
     }
 }

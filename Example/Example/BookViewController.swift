@@ -11,7 +11,7 @@ import TransitionKit
 
 class BookViewController: UIViewController {
 
-    private let bookTransition = BookTransition(duration: 0.5)
+    private let bookTransition = BookTransition(duration: 0.3)
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +28,7 @@ class BookViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.delegate = nil
+        //navigationController?.delegate = nil
     }
     
     func tap(gesture: UITapGestureRecognizer) {

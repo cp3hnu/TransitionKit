@@ -10,9 +10,10 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
-    let array = ["SemiModel", "Gate", "Circle", "Rotation", "Book", "Cube", "Flip"]
+    let array = ["SemiModel", "Gate", "Circle", "Rotation", "Flip", "Book", "Cube", "Blur"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "TransitionKit"
     }
 
     // MARK: - Table view data source
@@ -44,11 +45,13 @@ class TableViewController: UITableViewController {
         case 3:
             controller = RotationViewController()
         case 4:
-            controller = BookViewController()
-        case 5:
-            controller = CubeViewController()
-        case 6:
             controller = FlipViewController()
+        case 5:
+            controller = BookViewController()
+        case 6:
+            controller = CubeViewController()
+        case 7:
+            controller = BlurViewController()
         default:
             break
         }

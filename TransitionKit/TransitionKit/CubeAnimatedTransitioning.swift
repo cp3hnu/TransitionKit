@@ -9,13 +9,10 @@
 import UIKit
 
 class CubeAnimatedTransitioning: BaseAnimatedTransitioning {
-    
-    private weak var transitionContext: UIViewControllerContextTransitioning?
+
     private var viewWidth: CGFloat = UIScreen.mainScreen().bounds.width
     
     override func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
-        self.transitionContext = transitionContext
-        
         let fromView = fromVC.view
         let toView = toVC.view
         viewWidth = fromVC.view.bounds.width

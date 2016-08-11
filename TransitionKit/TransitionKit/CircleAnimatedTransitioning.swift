@@ -11,10 +11,8 @@ import UIKit
 class CircleAnimatedTransitioning: BaseAnimatedTransitioning {
  
     var clickedPoint = CGPoint.zero
-    private weak var transitionContext: UIViewControllerContextTransitioning?
     
     override func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
-        self.transitionContext = transitionContext
         containerView.addSubview(toVC.view)
         
         let point = clickedPoint

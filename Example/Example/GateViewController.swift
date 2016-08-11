@@ -11,7 +11,7 @@ import TransitionKit
 
 class GateViewController: UIViewController {
     
-    private let gateTransition = GateTransition(sawtoothCount: 20, sawtoothDistance: 20)
+    private let gateTransition = GateTransition(sawtoothCount: 20, sawtoothDistance: 20, duration: 0.3)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class GateViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.delegate = nil
+        //navigationController?.delegate = nil
     }
     
     func tap() {

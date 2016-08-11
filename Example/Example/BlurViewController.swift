@@ -1,21 +1,21 @@
 //
-//  RotationViewController.swift
+//  BlurViewController.swift
 //  Example
 //
-//  Created by CP3 on 16/8/4.
+//  Created by CP3 on 16/8/10.
 //  Copyright © 2016年 CP3. All rights reserved.
 //
 
 import UIKit
 import TransitionKit
 
-class RotationViewController: UIViewController {
+class BlurViewController: UIViewController {
 
-    private let rotationTransition = RotationTransition(duration: 0.3)
+    private let rotationTransition = BlurTransition(duration: 0.5)
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Rotation"
+        title = "Blur"
         view.backgroundColor = UIColor.whiteColor()
         
         let imageView = UIImageView(image: UIImage(named: "a"))
@@ -39,4 +39,5 @@ class RotationViewController: UIViewController {
         //vc.transitioningDelegate = transformTransition
         //presentViewController(vc, animated: true, completion: nil)
     }
+
 }

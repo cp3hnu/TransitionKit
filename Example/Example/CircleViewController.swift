@@ -29,7 +29,7 @@ class CircleViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.delegate = nil
+        //navigationController?.delegate = nil
     }
     
     func tap(gesture: UITapGestureRecognizer) {

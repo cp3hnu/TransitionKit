@@ -11,6 +11,7 @@ import UIKit
 class BaseAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransitioning {
     var dismiss = false
     var duration: NSTimeInterval = 0.3
+    weak var transitionContext: UIViewControllerContextTransitioning?
     
     var perspectiveTransform: CATransform3D {
         var transform = CATransform3DIdentity
@@ -23,6 +24,7 @@ class BaseAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransitioning
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+        self.transitionContext = transitionContext
         let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         let containerView = transitionContext.containerView()!
@@ -59,5 +61,25 @@ extension BaseAnimatedTransitioning {
 class TransitionView : UIView {
     override class func layerClass() -> AnyClass {
         return CATransformLayer.self
+    }
+}
+
+extension CGPoint {
+    mutating func translate(dx: CGFloat, _ dy: CGFloat) {
+        x -= dx
+        y -= dy
+    }
+}
+
+extension UIView {
+    func setAnchorPoint(point: CGPoint) {
+        let oldOrigin = frame.origin
+        layer.anchorPoint = point
+        let newOrigin = frame.origin
+        
+        let translateX = newOrigin.x - oldOrigin.x
+        let translateY = newOrigin.y - oldOrigin.y
+        
+        center.translate(translateX, translateY)
     }
 }

@@ -74,7 +74,10 @@ class RotationAnimatedTransitioning: BaseAnimatedTransitioning {
                 toVC.view.alpha = 1.0
                 fromVC.view.layer.transform = CATransform3DIdentity
                 toVC.view.layer.transform = CATransform3DIdentity
+                fromVC.view.setAnchorPoint(CGPoint(x: 0.5, y: 0.5))
+                toVC.view.setAnchorPoint(CGPoint(x: 0.5, y: 0.5))
                 self.shouldLayersRasterize([fromVC.view.layer, toVC.view.layer], shouldRasterize: false)
+                containerView.layer.sublayerTransform = CATransform3DIdentity
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
         })
     }

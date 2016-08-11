@@ -11,7 +11,7 @@ import TransitionKit
 
 class FlipViewController: UIViewController {
 
-    private let rotationTransition = FlipTransition(duration: 0.6)
+    private let rotationTransition = FlipTransition(duration: 0.3)
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +28,7 @@ class FlipViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.delegate = nil
+        //navigationController?.delegate = nil
     }
     
     func tap(gesture: UITapGestureRecognizer) {
