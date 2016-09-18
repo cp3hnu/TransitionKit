@@ -8,23 +8,23 @@
 
 import UIKit
 
-public class BlurTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
-    private var animator = BlurAnimatedTransitioning()
+open class BlurTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
+    fileprivate var animator = BlurAnimatedTransitioning()
     
-    public init(duration: NSTimeInterval = 0.3) {
+    public init(duration: TimeInterval = 0.3) {
         super.init()
         animator.duration = duration
     }
     
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return animator
     }
     
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return animator
     }
     
-    public func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return animator
     }
 }

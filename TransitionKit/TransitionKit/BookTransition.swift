@@ -8,44 +8,44 @@
 
 import UIKit
 
-public class BookTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
-    private var animator = BookAnimatedTransitioning()
-    private var interactiveAnimator = BookInteractiveTransition()
-    public var isPresent = false {
+open class BookTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
+    fileprivate var animator = BookAnimatedTransitioning()
+    fileprivate var interactiveAnimator = BookInteractiveTransition()
+    open var isPresent = false {
         didSet {
             interactiveAnimator.isPresent = isPresent
         }
     }
     
-    public init(duration: NSTimeInterval = 0.3) {
+    public init(duration: TimeInterval = 0.3) {
         super.init()
         animator.duration = duration
     }
     
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         interactiveAnimator.wireToViewController(presented)
         animator.dismiss = false
         return animator
     }
     
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         animator.dismiss = true
         return animator
     }
     
-    public func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    open func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactiveAnimator.interactionInProgress ? interactiveAnimator : nil
     }
     
-    public func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if operation == .Push {
+    open func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if operation == .push {
             interactiveAnimator.wireToViewController(toVC)
         }
-        animator.dismiss = operation == .Pop
+        animator.dismiss = operation == .pop
         return animator
     }
     
-    public func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    open func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactiveAnimator.interactionInProgress ? interactiveAnimator : nil
     }
 }

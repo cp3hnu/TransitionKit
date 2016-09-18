@@ -9,7 +9,7 @@
 import UIKit
 
 class SemiModelAnimatedTransitioning: BaseAnimatedTransitioning {
-    private let distanceFromTop: CGFloat
+    fileprivate let distanceFromTop: CGFloat
     
     init(distanceFromTop: CGFloat = 100) {
         self.distanceFromTop = distanceFromTop
@@ -29,60 +29,60 @@ class SemiModelAnimatedTransitioning: BaseAnimatedTransitioning {
         t2 = CATransform3DScale(t2, scale, scale, 1)
         
         if !dismiss {
-            let finalFrame = transitionContext.finalFrameForViewController(toVC)
-            let size = UIScreen.mainScreen().bounds.size
-            let initialFrame = CGRectOffset(finalFrame, 0, size.height)
+            let finalFrame = transitionContext.finalFrame(for: toVC)
+            let size = UIScreen.main.bounds.size
+            let initialFrame = finalFrame.offsetBy(dx: 0, dy: size.height)
             toVC.view.frame = initialFrame
             containerView.addSubview(toVC.view)
             fromVC.view.layer.zPosition = -1000
-            UIView.animateKeyframesWithDuration(duration, delay: 0, options: UIViewKeyframeAnimationOptions(rawValue: 0), animations: {
+            UIView.animateKeyframes(withDuration: duration, delay: 0, options: UIViewKeyframeAnimationOptions(rawValue: 0), animations: {
                 
-                UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0.5, animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                     fromVC.view.layer.transform = t1
                 })
                 
-                UIView.addKeyframeWithRelativeStartTime(0.5, relativeDuration: 0.5, animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
                     fromVC.view.layer.transform = t2
                 })
                 
-                UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 1.0, animations: {
-                    toVC.view.frame = CGRectOffset(finalFrame, 0, self.distanceFromTop)
+                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1.0, animations: {
+                    toVC.view.frame = finalFrame.offsetBy(dx: 0, dy: self.distanceFromTop)
                 })
                 
                 }, completion: { _ in
                     fromVC.view.layer.zPosition = 0
-                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             })
         } else {
             toVC.view.layer.transform = CATransform3DIdentity
             toVC.view.alpha = 0
-            let snapshotView = toVC.view.snapshotViewAfterScreenUpdates(false)
+            let snapshotView = toVC.view.snapshotView(afterScreenUpdates: false)!
             containerView.addSubview(snapshotView)
-            containerView.sendSubviewToBack(snapshotView)
+            containerView.sendSubview(toBack: snapshotView)
             snapshotView.layer.zPosition = -1000
             snapshotView.frame = toVC.view.frame
             snapshotView.layer.transform = t2
-            UIView.animateKeyframesWithDuration(duration, delay: 0, options: UIViewKeyframeAnimationOptions(rawValue: 0), animations: {
+            UIView.animateKeyframes(withDuration: duration, delay: 0, options: UIViewKeyframeAnimationOptions(rawValue: 0), animations: {
                 
-                UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0.5, animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                     snapshotView.layer.transform = t1
                 })
                 
-                UIView.addKeyframeWithRelativeStartTime(0.5, relativeDuration: 0.5, animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
                     snapshotView.layer.transform = CATransform3DIdentity
                 })
                 
-                UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 1.0, animations: {
-                    fromVC.view.frame = CGRectOffset(fromVC.view.frame, 0, fromVC.view.frame.height - self.distanceFromTop)
+                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1.0, animations: {
+                    fromVC.view.frame = fromVC.view.frame.offsetBy(dx: 0, dy: fromVC.view.frame.height - self.distanceFromTop)
                 })
                 
                 }, completion: { _ in
                     snapshotView.removeFromSuperview()
                     toVC.view.alpha = 1.0
-                    if transitionContext.transitionWasCancelled() {
+                    if transitionContext.transitionWasCancelled {
                         toVC.view.layer.transform = t2
                     }
-                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             })
         }
     }

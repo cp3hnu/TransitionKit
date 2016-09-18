@@ -10,19 +10,19 @@ import UIKit
 import TransitionKit
 
 enum PresentMode {
-    case Present
-    case Push
+    case present
+    case push
 }
 
 class TransitionViewController: UIViewController {
 
-    var transition: protocol<UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>!
-    var mode = PresentMode.Present
+    var transition: (UIViewControllerTransitioningDelegate & UINavigationControllerDelegate)!
+    var mode = PresentMode.present
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         
         let imageView = UIImageView(image: UIImage(named: "a"))
         imageView.frame = view.bounds
@@ -31,23 +31,23 @@ class TransitionViewController: UIViewController {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
     }
     
-    func tap(gesture: UITapGestureRecognizer) {
-        let point = gesture.locationInView(view)
+    func tap(_ gesture: UITapGestureRecognizer) {
+        let point = gesture.location(in: view)
         if let transition = transition as? CircleTransition {
             transition.clickedPoint = point
         } else if let transition = transition as? BookTransition {
-            transition.isPresent = (mode == .Present)
+            transition.isPresent = (mode == PresentMode.present)
         } else if let transition = transition as? GateTransition {
-            transition.isPresent = (mode == .Present)
+            transition.isPresent = (mode == PresentMode.present)
         }
         
         let vc = ViewController()
-        if case PresentMode.Push = mode {
+        if mode == PresentMode.push {
             navigationController?.delegate = transition
             navigationController?.pushViewController(vc, animated: true)
         } else {
             vc.transitioningDelegate = transition
-            presentViewController(vc, animated: true, completion: nil)
+            present(vc, animated: true, completion: nil)
         }
     }
 }

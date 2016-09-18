@@ -11,11 +11,11 @@ import TransitionKit
 
 class SemiModelViewController: TransitionViewController {
     
-    override func tap(gesture: UITapGestureRecognizer) {
+    override func tap(_ gesture: UITapGestureRecognizer) {
         let vc = ViewController()
-        vc.modalPresentationStyle = .Custom
+        vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = transition
-        presentViewController(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
 }
 

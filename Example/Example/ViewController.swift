@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Detail"
-        view.backgroundColor = UIColor.redColor()
+        view.backgroundColor = UIColor.red
         
         let imageView = UIImageView(image: UIImage(named: "b"))
         imageView.frame = view.bounds
@@ -24,17 +24,17 @@ class ViewController: UIViewController {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
     }
     
-    func tap(gesture: UITapGestureRecognizer) {
-        let point = gesture.locationInView(view)
+    func tap(_ gesture: UITapGestureRecognizer) {
+        let point = gesture.location(in: view)
         
         if let transition = navigationController?.delegate as? CircleTransition {
             transition.clickedPoint = point
         }
         
         if let navi = navigationController {
-           navi.popViewControllerAnimated(true)
+           navi.popViewController(animated: true)
         } else {
-            dismissViewControllerAnimated(true, completion: nil)
+            dismiss(animated: true, completion: nil)
         }
     }
 }

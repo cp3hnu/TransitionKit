@@ -9,37 +9,37 @@
 import Foundation
 
 
-public class SemiModelPresentationController: UIPresentationController {
-    private var dimmingView = UIView()
+open class SemiModelPresentationController: UIPresentationController {
+    fileprivate var dimmingView = UIView()
     
-    override init(presentedViewController: UIViewController, presentingViewController: UIViewController) {
-        super.init(presentedViewController: presentedViewController, presentingViewController: presentingViewController)
+    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
+        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         dimmingView.backgroundColor = UIColor(white: 0, alpha: 0.4)
         dimmingView.alpha = 0
         dimmingView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismiss)))
     }
     
-    override public func presentationTransitionWillBegin() {
+    override open func presentationTransitionWillBegin() {
         super.presentationTransitionWillBegin()
         
         dimmingView.frame = containerView!.frame
         dimmingView.alpha = 0.0
         
-        containerView?.insertSubview(dimmingView, atIndex: 0)
-        presentedViewController.transitionCoordinator()?.animateAlongsideTransition({ context in
+        containerView?.insertSubview(dimmingView, at: 0)
+        presentedViewController.transitionCoordinator?.animate(alongsideTransition: { context in
             self.dimmingView.alpha = 1.0
             }, completion: nil)
     }
     
-    override public func dismissalTransitionWillBegin() {
+    override open func dismissalTransitionWillBegin() {
         super.dismissalTransitionWillBegin()
         
-        presentedViewController.transitionCoordinator()?.animateAlongsideTransition({ context in
+        presentedViewController.transitionCoordinator?.animate(alongsideTransition: { context in
             self.dimmingView.alpha = 0.0
             }, completion: nil)
     }
     
-    override public func containerViewDidLayoutSubviews() {
+    override open func containerViewDidLayoutSubviews() {
         super.containerViewDidLayoutSubviews()
         
         dimmingView.frame = containerView!.frame
@@ -48,6 +48,6 @@ public class SemiModelPresentationController: UIPresentationController {
 
 private extension SemiModelPresentationController {
     @objc func dismiss() {
-        presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+        presentingViewController.dismiss(animated: true, completion: nil)
     }
 }

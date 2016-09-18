@@ -11,29 +11,29 @@ import TransitionKit
 
 class TableViewController: UITableViewController {
 
-    let array = ["SemiModel", "Gate", "Circle", "Rotation", "Flip", "Book", "Cube", "Blur", "Glue"]
+    let array = ["SemiModel", "Gate", "Circle", "Rotation", "Flip", "Book", "Cube", "Blur"]
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "TransitionKit"
     }
 
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return array.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ReuseIdentifier", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReuseIdentifier", for: indexPath)
         cell.textLabel?.text = array[indexPath.row]
 
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var controller: TransitionViewController?
         
         switch indexPath.row {
@@ -82,7 +82,7 @@ class TableViewController: UITableViewController {
             break
         }
         
-        controller?.mode = .Push
+        controller?.mode = .push
         if let controller = controller {
             navigationController?.pushViewController(controller, animated: true)
         }

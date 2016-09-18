@@ -10,7 +10,7 @@ import UIKit
 
 class BaseAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransitioning {
     var dismiss = false
-    var duration: NSTimeInterval = 0.3
+    var duration: TimeInterval = 0.3
     weak var transitionContext: UIViewControllerContextTransitioning?
     
     var perspectiveTransform: CATransform3D {
@@ -19,17 +19,17 @@ class BaseAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransitioning
         return transform
     }
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         self.transitionContext = transitionContext
-        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-        let containerView = transitionContext.containerView()!
+        let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
+        let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
+        let containerView = transitionContext.containerView
         
-        animateTransition(transitionContext, fromVC: fromVC, toVC: toVC, containerView: containerView)
+        animateTransition(transitionContext: transitionContext, fromVC: fromVC, toVC: toVC, containerView: containerView)
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
@@ -38,10 +38,10 @@ class BaseAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransitioning
 }
 
 extension BaseAnimatedTransitioning {
-    func shouldLayersRasterize(layers: [CALayer], shouldRasterize: Bool) {
+    func shouldRasterize(layers: [CALayer], rasterized: Bool) {
         layers.forEach {
-            $0.shouldRasterize = shouldRasterize
-            $0.rasterizationScale = UIScreen.mainScreen().scale
+            $0.shouldRasterize = rasterized
+            $0.rasterizationScale = UIScreen.main.scale
         }
     }
     
@@ -58,21 +58,21 @@ extension BaseAnimatedTransitioning {
     }
 }
 
-class TransitionView : UIView {
-    override class func layerClass() -> AnyClass {
+class TransitionView: UIView {
+    override class var layerClass: AnyClass {
         return CATransformLayer.self
     }
 }
 
 extension CGPoint {
-    mutating func translate(dx: CGFloat, _ dy: CGFloat) {
+    mutating func translate(dx: CGFloat, dy: CGFloat) {
         x -= dx
         y -= dy
     }
 }
 
 extension UIView {
-    func setAnchorPoint(point: CGPoint) {
+    func setAnchorPoint(_ point: CGPoint) {
         let oldOrigin = frame.origin
         layer.anchorPoint = point
         let newOrigin = frame.origin
@@ -80,6 +80,6 @@ extension UIView {
         let translateX = newOrigin.x - oldOrigin.x
         let translateY = newOrigin.y - oldOrigin.y
         
-        center.translate(translateX, translateY)
+        center.translate(dx: translateX, dy: translateY)
     }
 }

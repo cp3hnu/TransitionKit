@@ -8,47 +8,47 @@
 
 import Foundation
 
-public class GateTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
+open class GateTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
     
-    private var animator: GateAnimatedTransitioning!
-    private var interactiveAnimator: GateInteractiveTransition!
-    public var isPresent = false {
+    fileprivate var animator: GateAnimatedTransitioning!
+    fileprivate var interactiveAnimator: GateInteractiveTransition!
+    open var isPresent = false {
         didSet {
             interactiveAnimator.isPresent = isPresent
         }
     }
     
-    public init(sawtoothCount: Int = 1, sawtoothDistance: CGFloat = 0, duration: NSTimeInterval = 0.3) {
+    public init(sawtoothCount: Int = 1, sawtoothDistance: CGFloat = 0, duration: TimeInterval = 0.3) {
         animator = GateAnimatedTransitioning(sawtoothCount: sawtoothCount, sawtoothDistance: sawtoothDistance)
         animator.duration = duration
         interactiveAnimator = GateInteractiveTransition()
         super.init()
     }
     
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         interactiveAnimator.wireToViewController(presented)
         animator.dismiss = false
         return animator
     }
     
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         animator.dismiss = true
         return animator
     }
     
-    public func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    open func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactiveAnimator.interactionInProgress ? interactiveAnimator : nil
     }
     
-    public func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if operation == .Push {
+    open func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if operation == .push {
             interactiveAnimator.wireToViewController(toVC)
         }
-        animator.dismiss = (operation != .Push)
+        animator.dismiss = (operation != .push)
         return animator
     }
     
-    public func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    open func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactiveAnimator.interactionInProgress ? interactiveAnimator : nil
     }
 }

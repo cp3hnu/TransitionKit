@@ -8,42 +8,42 @@
 
 import UIKit
 
-public class GateInteractiveTransition: UIPercentDrivenInteractiveTransition {
-    public var interactionInProgress = false
-    private var shouldCompleteTransition = false
-    private var startScale: CGFloat = 1.0
-    public var isPresent = false
-    private weak var controller: UIViewController?
+open class GateInteractiveTransition: UIPercentDrivenInteractiveTransition {
+    open var interactionInProgress = false
+    fileprivate var shouldCompleteTransition = false
+    fileprivate var startScale: CGFloat = 1.0
+    open var isPresent = false
+    fileprivate weak var controller: UIViewController?
     
-    public func wireToViewController(vc: UIViewController) {
+    open func wireToViewController(_ vc: UIViewController) {
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:)))
         vc.view.addGestureRecognizer(pinch)
         controller = vc
     }
     
-    @objc private func handlePinch(sender: UIPinchGestureRecognizer) {
+    @objc fileprivate func handlePinch(_ sender: UIPinchGestureRecognizer) {
         guard let vc = controller else { return }
         
         switch sender.state {
-        case .Began:
+        case .began:
             interactionInProgress = true
             startScale = sender.scale
             if isPresent {
-                vc.dismissViewControllerAnimated(true, completion: nil)
+                vc.dismiss(animated: true, completion: nil)
             } else {
-                vc.navigationController?.popViewControllerAnimated(true)
+                vc.navigationController?.popViewController(animated: true)
             }
-        case .Changed:
+        case .changed:
             var fraction: Float = 1.0 - sender.scale.swf / startScale.swf
             fraction = fminf(fmaxf(fraction, 0.0), 1.0)
             shouldCompleteTransition = (fraction > 0.5)
-            updateInteractiveTransition(fraction.f)
-        case .Ended, .Cancelled:
+            update(fraction.f)
+        case .ended, .cancelled:
             interactionInProgress = false
-            if !shouldCompleteTransition || sender.state == .Cancelled {
-                cancelInteractiveTransition()
+            if !shouldCompleteTransition || sender.state == .cancelled {
+                cancel()
             } else {
-                finishInteractiveTransition()
+                finish()
             }
         default:
             break

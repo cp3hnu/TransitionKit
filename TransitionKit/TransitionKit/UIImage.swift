@@ -11,7 +11,7 @@ import CoreFoundation
 
 extension UIImage {
     
-    func splitIntoTwoSawtoothParts(distance distance: CGFloat, count: Int) -> [UIImage] {
+    func splitIntoTwoSawtoothParts(distance: CGFloat, count: Int) -> [UIImage] {
         var array = [UIImage]()
         let width = size.width
         let height = size.height
@@ -19,45 +19,45 @@ extension UIImage {
         let positiveCount = max(1, count)
         let heightGap = height/positiveCount.f
         
-        let leftPath = CGPathCreateMutable()
-        CGPathMoveToPoint(leftPath, nil, 0, 0)
+        let leftPath = CGMutablePath()
+        leftPath.move(to: CGPoint.zero)
         var direction: Int = -1
         for i in 0...positiveCount {
-            CGPathAddLineToPoint(leftPath, nil, width/2 + (widthGap * direction.f), heightGap * i.f)
+            leftPath.addLine(to: CGPoint(x: width/2 + (widthGap * direction.f), y: heightGap * i.f))
             direction *= -1
         }
-        CGPathAddLineToPoint(leftPath, nil, 0, height)
-        CGPathCloseSubpath(leftPath)
+        leftPath.addLine(to: CGPoint(x: 0, y: height))
+        leftPath.closeSubpath()
         let leftImage = createImageInPath(leftPath)
         array.append(leftImage)
         
         //part two
-        let rightPath = CGPathCreateMutable()
-        CGPathMoveToPoint(rightPath, nil, width, 0)
+        let rightPath = CGMutablePath()
+        rightPath.move(to: CGPoint(x: width, y: 0))
         direction = -1
         for i in 0...positiveCount {
-            CGPathAddLineToPoint(rightPath, nil, width/2 + (widthGap * direction.f), heightGap * i.f)
+            rightPath.addLine(to: CGPoint(x: width/2 + (widthGap * direction.f), y: heightGap * i.f))
             direction *= -1
         }
-        CGPathAddLineToPoint(rightPath, nil, width, height)
-        CGPathCloseSubpath(rightPath)
+        rightPath.addLine(to: CGPoint(x: width, y: height))
+        rightPath.closeSubpath()
         let rightImage = createImageInPath(rightPath)
         array.append(rightImage)
         return array
     }
     
-    func createImageInPath(path: CGPathRef) -> UIImage {
-        let scale = UIScreen.mainScreen().scale
+    func createImageInPath(_ path: CGPath) -> UIImage {
+        let scale = UIScreen.main.scale
         let width = size.width
         let height = size.height
-        UIGraphicsBeginImageContext(CGSizeMake(width * scale, height * scale))
+        UIGraphicsBeginImageContext(CGSize(width: width * scale, height: height * scale))
         let context = UIGraphicsGetCurrentContext()!
-        CGContextScaleCTM(context, scale, scale)
-        CGContextAddPath(context, path)
-        CGContextClip(context)
-        drawAtPoint(CGPointZero)
-        let maskedImage = CGBitmapContextCreateImage(context)!
-        let image = UIImage(CGImage: maskedImage, scale: scale, orientation: .Up)
+        context.scaleBy(x: scale, y: scale)
+        context.addPath(path)
+        context.clip()
+        draw(at: CGPoint.zero)
+        let maskedImage = context.makeImage()!
+        let image = UIImage(cgImage: maskedImage, scale: scale, orientation: .up)
         UIGraphicsEndImageContext()
         
         return image

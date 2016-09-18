@@ -10,17 +10,17 @@ import UIKit
 
 class FlipAnimatedTransitioning: BaseAnimatedTransitioning {
     
-    private var viewWidth: CGFloat = UIScreen.mainScreen().bounds.width
+    fileprivate var viewWidth: CGFloat = UIScreen.main.bounds.width
     
     override func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
-        let fromView = fromVC.view
-        let toView = toVC.view
+        let fromView = fromVC.view!
+        let toView = toVC.view!
         viewWidth = fromVC.view.bounds.width
         containerView.layer.sublayerTransform = perspectiveTransform
         
         let wrapperView: UIView = TransitionView(frame: fromView.frame)
         wrapperView.autoresizesSubviews = true
-        wrapperView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        wrapperView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         containerView.addSubview(wrapperView)
         fromView.frame.origin = CGPoint.zero
         toView.frame.origin = CGPoint.zero
@@ -28,7 +28,7 @@ class FlipAnimatedTransitioning: BaseAnimatedTransitioning {
         wrapperView.addSubview(toView)
         
         CATransaction.setCompletionBlock { [weak self] in
-            self?.shouldLayersRasterize([fromView.layer, toView.layer], shouldRasterize: false)
+            self?.shouldRasterize(layers: [fromView.layer, toView.layer], rasterized: false)
             
             fromView.layer.transform = CATransform3DIdentity
             toView.layer.transform = CATransform3DIdentity
@@ -41,20 +41,12 @@ class FlipAnimatedTransitioning: BaseAnimatedTransitioning {
             wrapperView.removeFromSuperview()
         }
         
-        fromView.layer.doubleSided = false
-        toView.layer.doubleSided = false
-        shouldLayersRasterize([fromView.layer, toView.layer], shouldRasterize: true)
+        fromView.layer.isDoubleSided = false
+        toView.layer.isDoubleSided = false
+        shouldRasterize(layers: [fromView.layer, toView.layer], rasterized: true)
         
-        fromView.layer.addAnimation(animation().fromAnimation, forKey: "fromVC")
-        toView.layer.addAnimation(animation().toAnimation, forKey: "toVC")
-    }
-    
-    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-        let containerView = transitionContext?.containerView()
-        containerView?.layer.sublayerTransform = CATransform3DIdentity
-        
-        let cancelled = transitionContext?.transitionWasCancelled() ?? false
-        transitionContext?.completeTransition(!cancelled)
+        fromView.layer.add(animation().fromAnimation, forKey: "fromVC")
+        toView.layer.add(animation().toAnimation, forKey: "toVC")
     }
 }
 
@@ -72,14 +64,14 @@ private extension FlipAnimatedTransitioning {
         toTransform = CATransform3DRotate(toTransform, M_PI.f - 0.001 * factor, 0.0, 1.0, 0.0)
         
         let fromFlipAnimation = CABasicAnimation(keyPath: "transform")
-        fromFlipAnimation.fromValue = NSValue(CATransform3D: CATransform3DIdentity)
-        fromFlipAnimation.toValue = NSValue(CATransform3D: fromTransform)
+        fromFlipAnimation.fromValue = NSValue(caTransform3D: CATransform3DIdentity)
+        fromFlipAnimation.toValue = NSValue(caTransform3D: fromTransform)
         fromFlipAnimation.duration = duration
         fromFlipAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         
         let toFlipAnimation = CABasicAnimation(keyPath: "transform")
-        toFlipAnimation.fromValue = NSValue(CATransform3D: toTransform)
-        toFlipAnimation.toValue = NSValue(CATransform3D: CATransform3DIdentity)
+        toFlipAnimation.fromValue = NSValue(caTransform3D: toTransform)
+        toFlipAnimation.toValue = NSValue(caTransform3D: CATransform3DIdentity)
         toFlipAnimation.duration = duration
         toFlipAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         
@@ -93,5 +85,15 @@ private extension FlipAnimatedTransitioning {
         toAnimation.delegate = self
         
         return (fromAnimation, toAnimation)
+    }
+}
+
+extension FlipAnimatedTransitioning: CAAnimationDelegate {
+    public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        let containerView = transitionContext?.containerView
+        containerView?.layer.sublayerTransform = CATransform3DIdentity
+        
+        let cancelled = transitionContext?.transitionWasCancelled ?? false
+        transitionContext?.completeTransition(!cancelled)
     }
 }

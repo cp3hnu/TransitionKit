@@ -10,21 +10,21 @@ import UIKit
 
 class BlurAnimatedTransitioning: BaseAnimatedTransitioning {
     override func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
-        let effect = UIBlurEffect(style: .Light)
+        let effect = UIBlurEffect(style: .light)
         let blurView = UIVisualEffectView()
         blurView.frame = fromVC.view.frame
         containerView.addSubview(blurView)
         toVC.view.frame.origin = CGPoint.zero
         
-        UIView.animateWithDuration(duration/2, animations: {
+        UIView.animate(withDuration: duration/2, animations: {
             blurView.effect = effect
             }, completion: { _ in
                 containerView.insertSubview(toVC.view, belowSubview: blurView)
-                UIView.animateWithDuration(self.duration/2, animations: {
+                UIView.animate(withDuration: self.duration/2, animations: {
                     blurView.effect = nil
                     }, completion: { _ in
                         blurView.removeFromSuperview()
-                        transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+                        transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
                 })
         })
     }

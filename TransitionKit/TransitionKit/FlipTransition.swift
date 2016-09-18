@@ -8,26 +8,26 @@
 
 import UIKit
 
-public class FlipTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
-    private var animator = FlipAnimatedTransitioning()
+open class FlipTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
+    fileprivate var animator = FlipAnimatedTransitioning()
     
-    public init(duration: NSTimeInterval = 0.3) {
+    public init(duration: TimeInterval = 0.3) {
         super.init()
         animator.duration = duration
     }
     
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         animator.dismiss = false
         return animator
     }
     
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         animator.dismiss = true
         return animator
     }
     
-    public func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        animator.dismiss = operation == .Pop
+    open func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        animator.dismiss = operation == .pop
         return animator
     }
 }

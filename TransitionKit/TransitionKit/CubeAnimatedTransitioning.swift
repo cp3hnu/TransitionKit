@@ -10,18 +10,18 @@ import UIKit
 
 class CubeAnimatedTransitioning: BaseAnimatedTransitioning {
 
-    private var viewWidth: CGFloat = UIScreen.mainScreen().bounds.width
+    fileprivate var viewWidth: CGFloat = UIScreen.main.bounds.width
     
     override func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
-        let fromView = fromVC.view
-        let toView = toVC.view
+        let fromView = fromVC.view!
+        let toView = toVC.view!
         viewWidth = fromVC.view.bounds.width
         
         containerView.layer.sublayerTransform = perspectiveTransform
         
         let wrapperView: UIView = TransitionView(frame: fromView.frame)
         wrapperView.autoresizesSubviews = true
-        wrapperView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+        wrapperView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         containerView.addSubview(wrapperView)
         fromView.frame.origin = CGPoint.zero
         toView.frame.origin = CGPoint.zero
@@ -29,7 +29,7 @@ class CubeAnimatedTransitioning: BaseAnimatedTransitioning {
         wrapperView.addSubview(toView)
         
         CATransaction.setCompletionBlock { [weak self] in
-            self?.shouldLayersRasterize([fromView.layer, toView.layer], shouldRasterize: false)
+            self?.shouldRasterize(layers: [fromView.layer, toView.layer], rasterized: false)
             
             fromView.layer.transform = CATransform3DIdentity
             toView.layer.transform = CATransform3DIdentity
@@ -42,23 +42,15 @@ class CubeAnimatedTransitioning: BaseAnimatedTransitioning {
             wrapperView.removeFromSuperview()
         }
         
-        fromView.layer.doubleSided = false
-        toView.layer.doubleSided = false
-        shouldLayersRasterize([fromView.layer, toView.layer], shouldRasterize: true)
+        fromView.layer.isDoubleSided = false
+        toView.layer.isDoubleSided = false
+        shouldRasterize(layers: [fromView.layer, toView.layer], rasterized: true)
         
         toView.layer.transform = CATransform3DIdentity
         fromView.layer.transform = fromTransform()
         
         wrapperView.layer.transform = CATransform3DInvert(CATransform3DIdentity)
-        wrapperView.layer.addAnimation(animation(), forKey: nil)
-    }
-    
-    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-        let containerView = transitionContext?.containerView()
-        containerView?.layer.sublayerTransform = CATransform3DIdentity
-        
-        let cancelled = transitionContext?.transitionWasCancelled() ?? false
-        transitionContext?.completeTransition(!cancelled)
+        wrapperView.layer.add(animation(), forKey: nil)
     }
 }
 
@@ -80,8 +72,8 @@ private extension CubeAnimatedTransitioning {
         rotation = CATransform3DRotate(rotation, M_PI_2.f * factor, 0.0, 1.0, 0.0)
         
         let cubeRotation: CABasicAnimation = CABasicAnimation(keyPath: "transform")
-        cubeRotation.fromValue = NSValue(CATransform3D: rotation)
-        cubeRotation.toValue = NSValue(CATransform3D: CATransform3DIdentity)
+        cubeRotation.fromValue = NSValue(caTransform3D: rotation)
+        cubeRotation.toValue = NSValue(caTransform3D: CATransform3DIdentity)
         cubeRotation.duration = duration
         
         let zPositionAnimation = CAKeyframeAnimation(keyPath: "zPosition")
@@ -95,6 +87,16 @@ private extension CubeAnimatedTransitioning {
         animation.delegate = self
         
         return animation
+    }
+}
+
+extension CubeAnimatedTransitioning: CAAnimationDelegate {
+    public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        let containerView = transitionContext?.containerView
+        containerView?.layer.sublayerTransform = CATransform3DIdentity
+        
+        let cancelled = transitionContext?.transitionWasCancelled ?? false
+        transitionContext?.completeTransition(!cancelled)
     }
 }
 

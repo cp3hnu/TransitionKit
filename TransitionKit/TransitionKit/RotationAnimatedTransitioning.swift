@@ -12,14 +12,14 @@ private let AnimationKey = "animationID"
 
 class RotationAnimatedTransitioning: BaseAnimatedTransitioning {
 
-    private var fromTransform: CATransform3D  {
+    fileprivate var fromTransform: CATransform3D  {
         let angle = dismiss ? -M_PI_2.f : M_PI_2.f
         var transform = CATransform3DIdentity
         transform = CATransform3DRotate(transform, angle, 0, 1, 0)
         return transform
     }
     
-    private var toTransform: CATransform3D {
+    fileprivate var toTransform: CATransform3D {
         let angle = dismiss ? M_PI_2.f : -M_PI_2.f
         var transform = CATransform3DIdentity
         transform = CATransform3DRotate(transform, angle, 0, 1, 0)
@@ -30,13 +30,13 @@ class RotationAnimatedTransitioning: BaseAnimatedTransitioning {
         containerView.addSubview(toVC.view)
         toVC.view.layer.transform = toTransform
         
-        UIView.animateKeyframesWithDuration(duration, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: {
+        UIView.animateKeyframes(withDuration: duration, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: {
             
-            UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0.5, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                 fromVC.view.layer.transform = self.fromTransform
             })
             
-            UIView.addKeyframeWithRelativeStartTime(0.5, relativeDuration: 0.5, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
                 toVC.view.layer.transform = CATransform3DIdentity
             })
             
@@ -44,7 +44,7 @@ class RotationAnimatedTransitioning: BaseAnimatedTransitioning {
                 fromVC.view.layer.transform = CATransform3DIdentity
                 toVC.view.layer.transform = CATransform3DIdentity
                 containerView.layer.sublayerTransform = CATransform3DIdentity
-                transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
     }
 }

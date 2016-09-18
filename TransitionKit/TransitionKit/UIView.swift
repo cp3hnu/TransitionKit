@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIView {
-    func splitIntoTwoSawtoothParts(distance distance: CGFloat, count: Int) -> [UIView] {
+    func splitIntoTwoSawtoothParts(distance: CGFloat, count: Int) -> [UIView] {
         let image = captureViewSnapshot()
         let array = image.splitIntoTwoSawtoothParts(distance: distance, count: count)
         return [UIImageView(image: array[0]), UIImageView(image: array[1])]
@@ -18,10 +18,10 @@ extension UIView {
     func captureViewSnapshot() -> UIImage {
         UIGraphicsBeginImageContext(frame.size)
         let context = UIGraphicsGetCurrentContext()!
-        layer.renderInContext(context)
+        layer.render(in: context)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return newImage
+        return newImage!
     }
 }

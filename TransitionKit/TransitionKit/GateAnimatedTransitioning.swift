@@ -9,9 +9,9 @@
 import UIKit
 
 class GateAnimatedTransitioning: BaseAnimatedTransitioning {
-    private let sawtoothCount: Int
-    private let sawtoothDistance: CGFloat
-    private let scale: CGFloat = 0.5
+    fileprivate let sawtoothCount: Int
+    fileprivate let sawtoothDistance: CGFloat
+    fileprivate let scale: CGFloat = 0.5
     
     init(sawtoothCount: Int, sawtoothDistance: CGFloat) {
         self.sawtoothCount = sawtoothCount
@@ -21,7 +21,7 @@ class GateAnimatedTransitioning: BaseAnimatedTransitioning {
     }
     
    override func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
-        let view = !dismiss ? fromVC.view : toVC.view
+        let view = !dismiss ? fromVC.view! : toVC.view!
         let array: [UIView] = view.splitIntoTwoSawtoothParts(distance: sawtoothDistance, count: sawtoothCount)
         let leftView: UIView = array[0]
         let rightView: UIView = array[1]
@@ -29,14 +29,14 @@ class GateAnimatedTransitioning: BaseAnimatedTransitioning {
         containerView.addSubview(rightView)
         if !dismiss {
             fromVC.view.alpha = 0
-            toVC.view.transform = CGAffineTransformMakeScale(scale, scale)
+            toVC.view.transform = CGAffineTransform(scaleX: scale, y: scale)
             containerView.addSubview(toVC.view)
-            containerView.sendSubviewToBack(toVC.view)
+            containerView.sendSubview(toBack: toVC.view)
         }
         let leftFrame = leftView.frame
-        let leftOffScreenFrame = CGRectOffset(leftView.bounds, -leftView.bounds.width/2 - sawtoothDistance, 0)
+        let leftOffScreenFrame = leftView.bounds.offsetBy(dx: -leftView.bounds.width/2 - sawtoothDistance, dy: 0)
         let rightFrame = rightView.frame
-        let rightOffScreenFrame = CGRectOffset(rightView.bounds, rightView.bounds.width/2 + sawtoothDistance, 0)
+        let rightOffScreenFrame = rightView.bounds.offsetBy(dx: rightView.bounds.width/2 + sawtoothDistance, dy: 0)
         let leftInitialFrame = !dismiss ? leftFrame : leftOffScreenFrame
         let leftFinalFrame = !dismiss ? leftOffScreenFrame : leftFrame
         let rightInitialFrame = !dismiss ? rightFrame : rightOffScreenFrame
@@ -44,13 +44,13 @@ class GateAnimatedTransitioning: BaseAnimatedTransitioning {
         leftView.frame = leftInitialFrame
         rightView.frame = rightInitialFrame
     
-        UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseInOut, animations: {
+        UIView.animate(withDuration: duration, delay: 0, options: UIViewAnimationOptions(), animations: {
             leftView.frame = leftFinalFrame
             rightView.frame = rightFinalFrame
             if !self.dismiss {
-                toVC.view.transform = CGAffineTransformIdentity
+                toVC.view.transform = CGAffineTransform.identity
             } else {
-                fromVC.view.transform = CGAffineTransformMakeScale(self.scale, self.scale)
+                fromVC.view.transform = CGAffineTransform(scaleX: self.scale, y: self.scale)
             }
             }, completion: { _ in
                 leftView.removeFromSuperview()
@@ -59,9 +59,9 @@ class GateAnimatedTransitioning: BaseAnimatedTransitioning {
                     fromVC.view.alpha = 1.0
                 } else {
                     containerView.addSubview(toVC.view)
-                    fromVC.view.transform = CGAffineTransformIdentity
+                    fromVC.view.transform = CGAffineTransform.identity
                 }
-                transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
     }
 }

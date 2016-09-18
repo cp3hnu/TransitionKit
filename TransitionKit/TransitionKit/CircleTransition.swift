@@ -8,29 +8,29 @@
 
 import UIKit
 
-public class CircleTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
+open class CircleTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
     
-    private var animator = CircleAnimatedTransitioning()
-    public var clickedPoint = CGPoint.zero {
+    fileprivate var animator = CircleAnimatedTransitioning()
+    open var clickedPoint = CGPoint.zero {
         didSet {
             animator.clickedPoint = clickedPoint
         }
     }
     
-    public init(duration: NSTimeInterval = 0.3) {
+    public init(duration: TimeInterval = 0.3) {
         super.init()
         animator.duration = duration
     }
     
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return animator
     }
     
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return animator
     }
     
-    public func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return animator
     }
 }

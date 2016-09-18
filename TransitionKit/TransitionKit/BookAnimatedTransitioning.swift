@@ -17,14 +17,14 @@ class BookAnimatedTransitioning: BaseAnimatedTransitioning {
         var transform = CATransform3DMakeRotation(-M_PI_2.f, 0, 1, 0)
         transform = CATransform3DScale(transform, 1.2, 1.2, 1)
         if !dismiss {
-            containerView.sendSubviewToBack(toVC.view)
+            containerView.sendSubview(toBack: toVC.view)
             fromVC.view.setAnchorPoint(anchorPoint)
         } else {
             toVC.view.setAnchorPoint(anchorPoint)
             toVC.view.layer.transform = transform
         }
         
-        UIView.animateWithDuration(duration, animations: {
+        UIView.animate(withDuration: duration, animations: {
             if !self.dismiss {
                 fromVC.view.layer.transform = transform
             } else {
@@ -36,7 +36,7 @@ class BookAnimatedTransitioning: BaseAnimatedTransitioning {
                 fromVC.view.setAnchorPoint(CGPoint(x: 0.5, y: 0.5))
                 toVC.view.setAnchorPoint(CGPoint(x: 0.5, y: 0.5))
                 containerView.layer.sublayerTransform = CATransform3DIdentity
-                let cancelled = transitionContext.transitionWasCancelled()
+                let cancelled = transitionContext.transitionWasCancelled
                 if cancelled {
                     toVC.view.removeFromSuperview()
                 }

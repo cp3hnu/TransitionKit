@@ -8,42 +8,42 @@
 
 import UIKit
 
-public class BookInteractiveTransition: UIPercentDrivenInteractiveTransition {
-    public var interactionInProgress = false
-    public var isPresent = false
-    private var shouldCompleteTransition = false
-    private weak var controller: UIViewController?
+open class BookInteractiveTransition: UIPercentDrivenInteractiveTransition {
+    open var interactionInProgress = false
+    open var isPresent = false
+    fileprivate var shouldCompleteTransition = false
+    fileprivate weak var controller: UIViewController?
     
-    public func wireToViewController(vc: UIViewController) {
+    open func wireToViewController(_ vc: UIViewController) {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         vc.view.addGestureRecognizer(pan)
         controller = vc
     }
     
-    @objc private func handlePan(sender: UIPanGestureRecognizer) {
+    @objc fileprivate func handlePan(_ sender: UIPanGestureRecognizer) {
         guard let vc = controller else { return }
         
-        let point = sender.translationInView(vc.view)
+        let point = sender.translation(in: vc.view)
         switch sender.state {
-        case .Began:
+        case .began:
             interactionInProgress = true
             if isPresent {
-                vc.dismissViewControllerAnimated(true, completion: nil)
+                vc.dismiss(animated: true, completion: nil)
             } else {
-                vc.navigationController?.popViewControllerAnimated(true)
+                vc.navigationController?.popViewController(animated: true)
             }
-        case .Changed:
+        case .changed:
             let width = vc.view.bounds.width
             let fraction = point.x/width + 0.23
             print(fraction)
             shouldCompleteTransition = fraction > 0.4
-            updateInteractiveTransition(fraction)
-        case .Ended, .Cancelled:
+            update(fraction)
+        case .ended, .cancelled:
             interactionInProgress = false
-            if !shouldCompleteTransition || sender.state == .Cancelled {
-                cancelInteractiveTransition()
+            if !shouldCompleteTransition || sender.state == .cancelled {
+                cancel()
             } else {
-                finishInteractiveTransition()
+                finish()
             }
         default:
             break

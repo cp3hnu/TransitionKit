@@ -10,33 +10,33 @@ import Foundation
 
 public final class SemiModelTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
     
-    private var animator: SemiModelAnimatedTransitioning!
-    private var interactiveAnimator: SemiModelInteractiveTransition!
+    fileprivate var animator: SemiModelAnimatedTransitioning!
+    fileprivate var interactiveAnimator: SemiModelInteractiveTransition!
     
-    public init(distanceFromTop: CGFloat = 100, duration: NSTimeInterval = 0.3) {
+    public init(distanceFromTop: CGFloat = 100, duration: TimeInterval = 0.3) {
         animator = SemiModelAnimatedTransitioning(distanceFromTop: distanceFromTop)
         animator.duration = duration
         interactiveAnimator = SemiModelInteractiveTransition(distanceFromTop: distanceFromTop)
         super.init()
     }
     
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         interactiveAnimator.wireToViewController(presented)
         animator.dismiss = false
         return animator
     }
     
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         animator.dismiss = true
         return animator
     }
     
-    public func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactiveAnimator.interactionInProgress ? self.interactiveAnimator : nil
     }
     
-    public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        return SemiModelPresentationController(presentedViewController: presented, presentingViewController: presenting)
+    public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return SemiModelPresentationController(presentedViewController: presented, presenting: presenting ?? source)
     }
     
 }
