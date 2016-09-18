@@ -11,6 +11,11 @@ import UIKit
 public class BookTransition: NSObject, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
     private var animator = BookAnimatedTransitioning()
     private var interactiveAnimator = BookInteractiveTransition()
+    public var isPresent = false {
+        didSet {
+            interactiveAnimator.isPresent = isPresent
+        }
+    }
     
     public init(duration: NSTimeInterval = 0.3) {
         super.init()
@@ -29,8 +34,7 @@ public class BookTransition: NSObject, UIViewControllerTransitioningDelegate, UI
     }
     
     public func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        interactiveAnimator.isPresent = true
-        return interactiveAnimator.interactionInProgress ? self.interactiveAnimator : nil
+        return interactiveAnimator.interactionInProgress ? interactiveAnimator : nil
     }
     
     public func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -42,7 +46,6 @@ public class BookTransition: NSObject, UIViewControllerTransitioningDelegate, UI
     }
     
     public func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        interactiveAnimator.isPresent = false
         return interactiveAnimator.interactionInProgress ? interactiveAnimator : nil
     }
 }

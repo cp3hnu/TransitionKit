@@ -10,14 +10,14 @@ import UIKit
 
 public class BookInteractiveTransition: UIPercentDrivenInteractiveTransition {
     public var interactionInProgress = false
-    public var isPresent = true
+    public var isPresent = false
     private var shouldCompleteTransition = false
     private weak var controller: UIViewController?
     
     public func wireToViewController(vc: UIViewController) {
-        controller = vc
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         vc.view.addGestureRecognizer(pan)
+        controller = vc
     }
     
     @objc private func handlePan(sender: UIPanGestureRecognizer) {
@@ -34,8 +34,9 @@ public class BookInteractiveTransition: UIPercentDrivenInteractiveTransition {
             }
         case .Changed:
             let width = vc.view.bounds.width
-            let fraction = point.x/width
-            shouldCompleteTransition = fraction > 0.3
+            let fraction = point.x/width + 0.23
+            print(fraction)
+            shouldCompleteTransition = fraction > 0.4
             updateInteractiveTransition(fraction)
         case .Ended, .Cancelled:
             interactionInProgress = false

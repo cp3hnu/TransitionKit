@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import TransitionKit
 
 class TableViewController: UITableViewController {
 
-    let array = ["SemiModel", "Gate", "Circle", "Rotation", "Flip", "Book", "Cube", "Blur"]
+    let array = ["SemiModel", "Gate", "Circle", "Rotation", "Flip", "Book", "Cube", "Blur", "Glue"]
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "TransitionKit"
@@ -33,29 +34,55 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var controller: UIViewController?
+        var controller: TransitionViewController?
         
         switch indexPath.row {
         case 0:
+            // SemiModel
             controller = SemiModelViewController()
+            controller?.title = array[indexPath.row]
+            controller?.transition = SemiModelTransition(distanceFromTop: 200)
         case 1:
-            controller = GateViewController()
+            // Gate
+            controller = TransitionViewController()
+            controller?.title = array[indexPath.row]
+            controller?.transition = GateTransition(sawtoothCount: 20, sawtoothDistance: 20, duration: 0.3)
         case 2:
-            controller = CircleViewController()
+            // Circle
+            controller = TransitionViewController()
+            controller?.title = array[indexPath.row]
+            controller?.transition = CircleTransition()
         case 3:
-            controller = RotationViewController()
+            // Rotation
+            controller = TransitionViewController()
+            controller?.title = array[indexPath.row]
+            controller?.transition = RotationTransition(duration: 0.3)
         case 4:
-            controller = FlipViewController()
+            // Flip
+            controller = TransitionViewController()
+            controller?.title = array[indexPath.row]
+            controller?.transition = FlipTransition(duration: 0.3)
         case 5:
-            controller = BookViewController()
+            // Book
+            controller = TransitionViewController()
+            controller?.title = array[indexPath.row]
+            controller?.transition = BookTransition(duration: 0.3)
+            
         case 6:
-            controller = CubeViewController()
+            // Cube
+            controller = TransitionViewController()
+            controller?.title = array[indexPath.row]
+            controller?.transition = CubeTransition(duration: 0.3)
         case 7:
-            controller = BlurViewController()
+            // Blur
+            controller = TransitionViewController()
+            controller?.title = array[indexPath.row]
+            controller?.transition = BlurTransition(duration: 0.5)
         default:
             break
         }
         
+        controller?.mode = .Push
         if let controller = controller {
             navigationController?.pushViewController(controller, animated: true)
         }

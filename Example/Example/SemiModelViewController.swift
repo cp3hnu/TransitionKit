@@ -9,26 +9,12 @@
 import UIKit
 import TransitionKit
 
-class SemiModelViewController: UIViewController {
-
-    private let semiModelTransition = SemiModelTransition(distanceFromTop: 200)
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        title = "SemiModel"
-        view.backgroundColor = UIColor.whiteColor()
-        
-        let imageView = UIImageView(image: UIImage(named: "a"))
-        imageView.frame = view.bounds
-        view.addSubview(imageView)
-        
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap)))
-    }
+class SemiModelViewController: TransitionViewController {
     
-    func tap() {
+    override func tap(gesture: UITapGestureRecognizer) {
         let vc = ViewController()
         vc.modalPresentationStyle = .Custom
-        vc.transitioningDelegate = semiModelTransition
+        vc.transitioningDelegate = transition
         presentViewController(vc, animated: true, completion: nil)
     }
 }

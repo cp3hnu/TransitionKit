@@ -131,11 +131,11 @@
 		DB6B7C7F1D50335700EDDE85 /* TransitionKit */ = {
 			isa = PBXGroup;
 			children = (
-				DB5B786A1D5B215500B19E1B /* Blur */,
 				DB6B7C801D50335700EDDE85 /* TransitionKit.h */,
 				DB6B7C821D50335700EDDE85 /* Info.plist */,
 				DB6B7CAA1D50389000EDDE85 /* CGFloat.swift */,
 				DB6B7CA61D5034B300EDDE85 /* BaseAnimatedTransitioning.swift */,
+				DB5B786A1D5B215500B19E1B /* Blur */,
 				DBFFB2E01D59B68C008CB53C /* Flip */,
 				DB0E176B1D55EDDB005D575E /* Cube */,
 				DB5246F81D530B5000DF2F5F /* Book */,

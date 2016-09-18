@@ -2,21 +2,21 @@
 
 ## Transitions
 
-* Semi Model Transition
+* Semi Model
 
-* Gate Transition
+* Gate
 
-* Circle Transition
+* Circle
 
-* Rotation Transition
+* Rotation
 
-* Book Transition
+* Book
 
-* Flip Transition
+* Flip
 
-* Cube Transition
+* Cube
 
-* Blur Transition
+* Blur
 
   ​
 
