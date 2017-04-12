@@ -2,7 +2,7 @@
 
 ## Transitions
 
-* Semi Model
+* Semi Model
 
 * Gate
 
@@ -88,7 +88,7 @@ github "cp3hnu/TransitionKit"
 
 
 
-##Requirements
+## Requirements
 iOS 8.0+
 
 Xcode 8.0+
