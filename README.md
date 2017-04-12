@@ -89,11 +89,11 @@ github "cp3hnu/TransitionKit"
 
 
 ## Requirements
-iOS 8.0+
+1. iOS 8.0+
 
-Xcode 8.0+
+2. Xcode 8.0+
 
-Swift 3.0+
+3. Swift 3.0+
 
 ## License
 
