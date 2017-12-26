@@ -9,12 +9,11 @@
 import UIKit
 
 class BookAnimatedTransitioning: BaseAnimatedTransitioning {
-   
     override func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
         containerView.layer.sublayerTransform = perspectiveTransform
         containerView.addSubview(toVC.view)
         let anchorPoint = CGPoint(x: 0, y: 0.5)
-        var transform = CATransform3DMakeRotation(-M_PI_2.f, 0, 1, 0)
+        var transform = CATransform3DMakeRotation(-(Double.pi/2).f, 0, 1, 0)
         transform = CATransform3DScale(transform, 1.2, 1.2, 1)
         if !dismiss {
             containerView.sendSubview(toBack: toVC.view)

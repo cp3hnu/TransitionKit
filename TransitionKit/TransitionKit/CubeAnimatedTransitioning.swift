@@ -59,7 +59,7 @@ private extension CubeAnimatedTransitioning {
     func fromTransform() -> CATransform3D {
         let factor: CGFloat = dismiss ? -1 : 1
         var transform = CATransform3DIdentity
-        transform = CATransform3DRotate(transform, -M_PI_2.f * factor, 0.0, 1.0, 0.0)
+        transform = CATransform3DRotate(transform, -(Double.pi/2).f * factor, 0.0, 1.0, 0.0)
         transform = CATransform3DTranslate(transform, -viewWidth/2 * factor, 0.0, viewWidth/2)
         
         return transform
@@ -69,7 +69,7 @@ private extension CubeAnimatedTransitioning {
         let factor: CGFloat = dismiss ? -1 : 1
         var rotation = CATransform3DIdentity
         rotation = CATransform3DTranslate(rotation, viewWidth/2 * factor, 0.0, -viewWidth/2)
-        rotation = CATransform3DRotate(rotation, M_PI_2.f * factor, 0.0, 1.0, 0.0)
+        rotation = CATransform3DRotate(rotation, (Double.pi/2).f * factor, 0.0, 1.0, 0.0)
         
         let cubeRotation: CABasicAnimation = CABasicAnimation(keyPath: "transform")
         cubeRotation.fromValue = NSValue(caTransform3D: rotation)

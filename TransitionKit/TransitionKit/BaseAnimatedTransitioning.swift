@@ -49,11 +49,11 @@ extension BaseAnimatedTransitioning {
         // The following CAMediaTimingFunction mimics zPosition = sin(t)
         // Empiric (possibly incorrect, but it does the job) implementation based on the circle approximation with bezier cubic curves
         // ( http://www.whizkidtech.redprince.net/bezier/circle/ )
-        // sin(t) tangent for t=0 is a diagonal. But we have to remap x=[0PI/2] to t=[01]. => scale with M_PI/2.0f factor
+        // sin(t) tangent for t=0 is a diagonal. But we have to remap x=[0PI/2] to t=[01]. => scale with Double.pi/2.0f factor
         
         let kappa: Float = 4.0/3.0 * (sqrt(2.0) - 1.0) / sqrt(2.0)
-        let firstQuarterCircleApproximationFuction = CAMediaTimingFunction(controlPoints: kappa/Float(M_PI_2), kappa, 1.0 - kappa, 1.0)
-        let secondQuarterCircleApproximationFuction = CAMediaTimingFunction(controlPoints: kappa, 0.0, 1.0 - kappa/Float(M_PI_2), 1.0 - kappa)
+        let firstQuarterCircleApproximationFuction = CAMediaTimingFunction(controlPoints: kappa/Float(Double.pi/2), kappa, 1.0 - kappa, 1.0)
+        let secondQuarterCircleApproximationFuction = CAMediaTimingFunction(controlPoints: kappa, 0.0, 1.0 - kappa/Float(Double.pi/2), 1.0 - kappa)
         return [firstQuarterCircleApproximationFuction, secondQuarterCircleApproximationFuction]
     }
 }

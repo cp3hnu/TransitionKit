@@ -16,10 +16,10 @@ class CircleAnimatedTransitioning: BaseAnimatedTransitioning {
         containerView.addSubview(toVC.view)
         
         let point = clickedPoint
-        let maskInitialPath = UIBezierPath(arcCenter: point, radius: 2, startAngle: 0, endAngle: 2 * M_PI.f, clockwise: true)
+        let maskInitialPath = UIBezierPath(arcCenter: point, radius: 2, startAngle: 0, endAngle: 2 * Double.pi.f, clockwise: true)
         let extremePoint = CGPoint(x: max(fromVC.view.bounds.width - point.x, point.x), y: max(fromVC.view.bounds.height - point.y, point.y))
         let radius = sqrt((extremePoint.x * extremePoint.x) + (extremePoint.y * extremePoint.y))
-        let maskFinaLPath = UIBezierPath(arcCenter: point, radius: radius, startAngle: 0, endAngle: 2 * M_PI.f, clockwise: true)
+        let maskFinaLPath = UIBezierPath(arcCenter: point, radius: radius, startAngle: 0, endAngle: 2 * Double.pi.f, clockwise: true)
         
         let maskLayer = CAShapeLayer()
         maskLayer.path = maskFinaLPath.cgPath

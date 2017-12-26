@@ -31,7 +31,7 @@ class TransitionViewController: UIViewController {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
     }
     
-    func tap(_ gesture: UITapGestureRecognizer) {
+    @objc func tap(_ gesture: UITapGestureRecognizer) {
         let point = gesture.location(in: view)
         if let transition = transition as? CircleTransition {
             transition.clickedPoint = point

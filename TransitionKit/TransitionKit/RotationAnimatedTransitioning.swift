@@ -13,14 +13,14 @@ private let AnimationKey = "animationID"
 class RotationAnimatedTransitioning: BaseAnimatedTransitioning {
 
     fileprivate var fromTransform: CATransform3D  {
-        let angle = dismiss ? -M_PI_2.f : M_PI_2.f
+        let angle = dismiss ? -(Double.pi/2).f : (Double.pi/2).f
         var transform = CATransform3DIdentity
         transform = CATransform3DRotate(transform, angle, 0, 1, 0)
         return transform
     }
     
     fileprivate var toTransform: CATransform3D {
-        let angle = dismiss ? M_PI_2.f : -M_PI_2.f
+        let angle = dismiss ? (Double.pi/2).f : -(Double.pi/2).f
         var transform = CATransform3DIdentity
         transform = CATransform3DRotate(transform, angle, 0, 1, 0)
         return transform

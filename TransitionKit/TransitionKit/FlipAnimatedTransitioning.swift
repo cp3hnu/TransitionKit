@@ -60,8 +60,8 @@ private extension FlipAnimatedTransitioning {
         
         var fromTransform = CATransform3DIdentity
         var toTransform = CATransform3DIdentity
-        fromTransform = CATransform3DRotate(fromTransform, -M_PI.f + 0.001 * factor, 0.0, 1.0, 0.0)
-        toTransform = CATransform3DRotate(toTransform, M_PI.f - 0.001 * factor, 0.0, 1.0, 0.0)
+        fromTransform = CATransform3DRotate(fromTransform, -Double.pi.f + 0.001 * factor, 0.0, 1.0, 0.0)
+        toTransform = CATransform3DRotate(toTransform, Double.pi.f - 0.001 * factor, 0.0, 1.0, 0.0)
         
         let fromFlipAnimation = CABasicAnimation(keyPath: "transform")
         fromFlipAnimation.fromValue = NSValue(caTransform3D: CATransform3DIdentity)
