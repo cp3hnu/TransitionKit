@@ -16,7 +16,7 @@ class BookAnimatedTransitioning: BaseAnimatedTransitioning {
         var transform = CATransform3DMakeRotation(-(Double.pi/2).f, 0, 1, 0)
         transform = CATransform3DScale(transform, 1.2, 1.2, 1)
         if !dismiss {
-            containerView.sendSubview(toBack: toVC.view)
+            containerView.sendSubviewToBack(toVC.view)
             fromVC.view.setAnchorPoint(anchorPoint)
         } else {
             toVC.view.setAnchorPoint(anchorPoint)

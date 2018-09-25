@@ -30,7 +30,7 @@ class RotationAnimatedTransitioning: BaseAnimatedTransitioning {
         containerView.addSubview(toVC.view)
         toVC.view.layer.transform = toTransform
         
-        UIView.animateKeyframes(withDuration: duration, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: {
+        UIView.animateKeyframes(withDuration: duration, delay: 0, options: UIView.KeyframeAnimationOptions(rawValue: 0), animations: {
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                 fromVC.view.layer.transform = self.fromTransform

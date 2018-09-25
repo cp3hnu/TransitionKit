@@ -35,7 +35,7 @@ class SemiModelAnimatedTransitioning: BaseAnimatedTransitioning {
             toVC.view.frame = initialFrame
             containerView.addSubview(toVC.view)
             fromVC.view.layer.zPosition = -1000
-            UIView.animateKeyframes(withDuration: duration, delay: 0, options: UIViewKeyframeAnimationOptions(rawValue: 0), animations: {
+            UIView.animateKeyframes(withDuration: duration, delay: 0, options: UIView.KeyframeAnimationOptions(rawValue: 0), animations: {
                 
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                     fromVC.view.layer.transform = t1
@@ -58,11 +58,11 @@ class SemiModelAnimatedTransitioning: BaseAnimatedTransitioning {
             toVC.view.alpha = 0
             let snapshotView = toVC.view.snapshotView(afterScreenUpdates: false)!
             containerView.addSubview(snapshotView)
-            containerView.sendSubview(toBack: snapshotView)
+            containerView.sendSubviewToBack(snapshotView)
             snapshotView.layer.zPosition = -1000
             snapshotView.frame = toVC.view.frame
             snapshotView.layer.transform = t2
-            UIView.animateKeyframes(withDuration: duration, delay: 0, options: UIViewKeyframeAnimationOptions(rawValue: 0), animations: {
+            UIView.animateKeyframes(withDuration: duration, delay: 0, options: UIView.KeyframeAnimationOptions(rawValue: 0), animations: {
                 
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                     snapshotView.layer.transform = t1

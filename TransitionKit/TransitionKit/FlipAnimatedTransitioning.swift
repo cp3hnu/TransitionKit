@@ -67,13 +67,13 @@ private extension FlipAnimatedTransitioning {
         fromFlipAnimation.fromValue = NSValue(caTransform3D: CATransform3DIdentity)
         fromFlipAnimation.toValue = NSValue(caTransform3D: fromTransform)
         fromFlipAnimation.duration = duration
-        fromFlipAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        fromFlipAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         
         let toFlipAnimation = CABasicAnimation(keyPath: "transform")
         toFlipAnimation.fromValue = NSValue(caTransform3D: toTransform)
         toFlipAnimation.toValue = NSValue(caTransform3D: CATransform3DIdentity)
         toFlipAnimation.duration = duration
-        toFlipAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        toFlipAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         
         let fromAnimation: CAAnimationGroup = CAAnimationGroup()
         fromAnimation.animations = [fromFlipAnimation, zPositionAnimation]
