@@ -40,8 +40,13 @@ class CubeAnimatedTransitioning: BaseAnimatedTransitioning {
             containerView.addSubview(fromView)
             containerView.addSubview(toView)
             wrapperView.removeFromSuperview()
+            
+            containerView.layer.sublayerTransform = CATransform3DIdentity
+            let cancelled = transitionContext.transitionWasCancelled
+            transitionContext.completeTransition(!cancelled)
         }
         
+        CATransaction.begin()
         fromView.layer.isDoubleSided = false
         toView.layer.isDoubleSided = false
         shouldRasterize(layers: [fromView.layer, toView.layer], rasterized: true)
@@ -51,6 +56,7 @@ class CubeAnimatedTransitioning: BaseAnimatedTransitioning {
         
         wrapperView.layer.transform = CATransform3DInvert(CATransform3DIdentity)
         wrapperView.layer.add(animation(), forKey: nil)
+        CATransaction.commit()
     }
 }
 
@@ -84,20 +90,7 @@ private extension CubeAnimatedTransitioning {
         let animation = CAAnimationGroup()
         animation.animations = [cubeRotation, zPositionAnimation]
         animation.duration = duration
-        animation.delegate = self
         
         return animation
     }
 }
-
-extension CubeAnimatedTransitioning: CAAnimationDelegate {
-    public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        let containerView = transitionContext?.containerView
-        containerView?.layer.sublayerTransform = CATransform3DIdentity
-        
-        let cancelled = transitionContext?.transitionWasCancelled ?? false
-        transitionContext?.completeTransition(!cancelled)
-    }
-}
-
-

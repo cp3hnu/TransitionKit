@@ -39,20 +39,25 @@ class FlipAnimatedTransitioning: BaseAnimatedTransitioning {
             containerView.addSubview(fromView)
             containerView.addSubview(toView)
             wrapperView.removeFromSuperview()
+            
+            containerView.layer.sublayerTransform = CATransform3DIdentity
+            let cancelled = transitionContext.transitionWasCancelled
+            transitionContext.completeTransition(!cancelled)
         }
         
+        CATransaction.begin()
         fromView.layer.isDoubleSided = false
         toView.layer.isDoubleSided = false
         shouldRasterize(layers: [fromView.layer, toView.layer], rasterized: true)
-        
-        fromView.layer.add(animation().fromAnimation, forKey: "fromVC")
-        toView.layer.add(animation().toAnimation, forKey: "toVC")
+        fromView.layer.add(createLayerAnimation().fromAnimation, forKey: "fromVC")
+        toView.layer.add(createLayerAnimation().toAnimation, forKey: "toVC")
+        CATransaction.commit()
     }
 }
 
 // MARK: - Help
 private extension FlipAnimatedTransitioning {
-    func animation() -> (fromAnimation: CAAnimationGroup, toAnimation: CAAnimationGroup) {
+    func createLayerAnimation() -> (fromAnimation: CAAnimationGroup, toAnimation: CAAnimationGroup) {
         let factor: CGFloat = dismiss ? 1 : -1
         let zPositionAnimation = CAKeyframeAnimation(keyPath: "zPosition")
         zPositionAnimation.values = [-0.0, -viewWidth * 0.5, -0.0]
@@ -75,25 +80,14 @@ private extension FlipAnimatedTransitioning {
         toFlipAnimation.duration = duration
         toFlipAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         
-        let fromAnimation: CAAnimationGroup = CAAnimationGroup()
+        let fromAnimation = CAAnimationGroup()
         fromAnimation.animations = [fromFlipAnimation, zPositionAnimation]
         fromAnimation.duration = duration
         
-        let toAnimation: CAAnimationGroup = CAAnimationGroup()
+        let toAnimation = CAAnimationGroup()
         toAnimation.animations = [toFlipAnimation, zPositionAnimation]
         toAnimation.duration = duration
-        toAnimation.delegate = self
         
         return (fromAnimation, toAnimation)
-    }
-}
-
-extension FlipAnimatedTransitioning: CAAnimationDelegate {
-    public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        let containerView = transitionContext?.containerView
-        containerView?.layer.sublayerTransform = CATransform3DIdentity
-        
-        let cancelled = transitionContext?.transitionWasCancelled ?? false
-        transitionContext?.completeTransition(!cancelled)
     }
 }

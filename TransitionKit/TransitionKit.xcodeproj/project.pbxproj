@@ -84,6 +84,13 @@
 			name = Cube;
 			sourceTree = "<group>";
 		};
+		DB4C049522A0D2D700F1D991 /* Door */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Door;
+			sourceTree = "<group>";
+		};
 		DB5246F11D52CF1100DF2F5F /* Rotation */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +142,7 @@
 				DB6B7C821D50335700EDDE85 /* Info.plist */,
 				DB6B7CAA1D50389000EDDE85 /* CGFloat.swift */,
 				DB6B7CA61D5034B300EDDE85 /* BaseAnimatedTransitioning.swift */,
+				DB4C049522A0D2D700F1D991 /* Door */,
 				DB5B786A1D5B215500B19E1B /* Blur */,
 				DBFFB2E01D59B68C008CB53C /* Flip */,
 				DB0E176B1D55EDDB005D575E /* Cube */,
@@ -240,6 +248,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = DB6B7C731D50335700EDDE85;
@@ -425,7 +434,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -444,7 +453,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.datayp.TransitionKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

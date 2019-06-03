@@ -27,6 +27,7 @@ class RotationAnimatedTransitioning: BaseAnimatedTransitioning {
     }
     
     override func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromVC: UIViewController, toVC: UIViewController, containerView: UIView) {
+        containerView.layer.sublayerTransform = perspectiveTransform
         containerView.addSubview(toVC.view)
         toVC.view.layer.transform = toTransform
         

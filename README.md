@@ -18,7 +18,7 @@
 
 * Blur
 
-  ​
+  
 
 ## Screenshot
 
@@ -89,8 +89,8 @@ github "cp3hnu/TransitionKit"
 
 
 ## Requirements
-* Swift 4.0+
-* Xcode 9.0+
+* Swift 5.0+
+* Xcode 10.0+
 * iOS 8.0+
 
 ## License
